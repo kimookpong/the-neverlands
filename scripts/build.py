@@ -9,6 +9,7 @@ import re
 import shutil
 from atlas import atlas_block, render_svg
 from reader import character_catalog, profile_block, realm_block, heraldry_catalog, story_block, crest_svg
+from events import event_catalog, event_context, event_links
 from pronunciation import annotate_data, annotate_html
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +17,7 @@ OUT = ROOT / 'dist'
 DATA = json.loads((ROOT / 'content/wiki.json').read_text())
 ATLAS = json.loads((ROOT / 'content/atlas.json').read_text())
 READER = json.loads((ROOT / 'content/reader-guide.json').read_text())
+EVENTS = json.loads((ROOT / 'content/events.json').read_text())
 ARTICLES = {a['slug']: a for a in DATA['articles']}
 CATEGORIES = {c['id']: c for c in DATA['categories']}
 STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': 'ชื่อชั่วคราว',
@@ -24,7 +26,7 @@ STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': '
           'legend': 'ตำนาน · ความจริงยังไม่ยืนยัน'}
 ICONS = {
  'world': '◎', 'history': '⌛', 'kingdoms': '♜', 'characters': '♙',
- 'peoples': '❋', 'magic': '✧', 'technology': '⚒', 'timeline': '◷', 'atlas': '⌖', 'story': '☷',
+ 'peoples': '❋', 'magic': '✧', 'technology': '⚒', 'timeline': '◷', 'atlas': '⌖', 'story': '☷', 'events': '✦',
 }
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--base-path', default=os.environ.get('BASE_PATH', '/the-neverlands/'))
@@ -81,7 +83,8 @@ def shell(title, description, body, path='', category='', page_type='website', c
   <link rel="canonical" href="{canonical}"><link rel="icon" type="image/svg+xml" href="{url('assets/favicon.svg')}">
   <link rel="stylesheet" href="{url('assets/styles.css')}">
   <link rel="stylesheet" href="{url('assets/atlas.css')}">
-  <link rel="stylesheet" href="{url('assets/reader.css')}">
+  <link rel="stylesheet" href="{url('assets/reader.css')}?v={e(DATA['version'])}">
+  <link rel="stylesheet" href="{url('assets/events.css')}?v={e(DATA['version'])}">
   <script defer src="{url('assets/app.js')}"></script>
 </head>
 <body data-base="{BASE}">
@@ -117,6 +120,7 @@ def home():
         for path,count,title,description in [
             ('categories/characters/','19 ภาพแนวคิด','ตัวละครและความเชื่อมโยง','บทบาท สังกัด และความสัมพันธ์ที่เปิดเผยได้'),
             ('wiki/heraldry/','9 ดินแดน','ตราและผู้ครองอำนาจ','เครื่องหมายกับสถานะตระกูลผู้ปกครอง'),
+            ('wiki/fantasy-events/','8 เหตุการณ์','ร่องรอยแฟนตาซี','คำทำนาย พิธีกรรม ผู้คน และข้อพิพาทที่เชื่อมโลก'),
             ('wiki/story-outline/','4 องค์ · 41 บท','ลำดับองค์และบท','ชื่อฉบับสำหรับผู้อ่านที่เก็บจุดหักมุมไว้')]) + '</section>'
     category_cards = ''.join(f'''<a class="category-card" href="{url('categories/'+c['id']+'/')}">
         <span class="category-symbol" aria-hidden="true">{ICONS[c['id']]}</span>
@@ -156,6 +160,9 @@ def article_page(a):
     reader = profile_block(a['slug'],READER,BASE) if a['category']=='characters' else realm_block(a['slug'],READER,BASE)
     if a['slug']=='heraldry': reader=heraldry_catalog(READER,BASE)
     if a['slug']=='story-outline': reader=story_block(READER)
+    if a['slug']=='fantasy-events': reader=event_catalog(EVENTS,ARTICLES,BASE)
+    reader += event_context(a['slug'],EVENTS,ARTICLES,ATLAS,BASE)
+    connections = event_links(a['slug'],EVENTS,ARTICLES,BASE)
     has_map = next((k['mapped'] for k in ATLAS['kingdoms'] if k['id']==a['slug']),False)
     map_label = 'ดูตำแหน่งและสถานที่สำคัญบนแผนที่ข้อเสนอ' if has_map else 'ดูสถานะข้อมูลในคลังแผนที่'
     map_link = f'<a class="kingdom-map-link" href="{article_url("atlas")}?region={a["slug"]}">{map_label} ↗</a>' if a['category'] == 'kingdoms' else ''
@@ -164,12 +171,16 @@ def article_page(a):
       {atlas}
       {reader}
       <div class="article-layout"><div class="prose">{sections}</div><aside class="article-aside"><div class="toc"><p class="eyebrow">ในหน้านี้</p><h2>ในบทความนี้</h2>{toc}</div>{'<dl class="fact-box">'+facts+'</dl>' if facts else ''}<div class="reader-note"><span aria-hidden="true">✧</span><p>แสดงเฉพาะข้อมูลที่เปิดเผยได้<br>ไม่รวมความลับและตอนจบ</p></div></aside></div>
+      {connections}
       <section class="related-section"><div class="section-heading"><div><p class="eyebrow">สำรวจต่อ</p><h2>บันทึกที่เกี่ยวข้อง</h2></div></div><div class="related-grid">{related}</div></section>
     </article>'''
     return shell(a['title'],a['description'],body,f'wiki/{a["slug"]}/',a['category'],'article',c['title'])
 
 
 def category_page(c):
+    if c['id']=='events':
+        body='<div class="listing-page"><header class="listing-header"><p class="eyebrow">เมื่อเรื่องลึกลับกระทบชีวิตผู้คน</p><h1>เหตุการณ์สำคัญ</h1><p>ภูมิหลังแฟนตาซีที่เชื่อมผู้คน ดินแดน และการเมือง โดยไม่เปิดผลลัพธ์ของเรื่องหลัก</p></header>'+event_catalog(EVENTS,ARTICLES,BASE)+'</div>'
+        return shell('เหตุการณ์สำคัญ',c['description'],body,'categories/events/','events',crumbs=c['title'])
     if c['id']=='characters':
         return shell('ตัวละครสำคัญ','ภาพแนวคิด บทบาท และความเชื่อมโยงตัวละครที่เปิดเผยได้',character_catalog(READER,BASE),'categories/characters/','characters',crumbs='ตัวละคร')
     if c['id']=='story':
@@ -196,6 +207,8 @@ def write(path, content):
 
 
 def validate():
+    if EVENTS['visibility']!='public' or EVENTS['scope']!='background-only':
+        raise ValueError('Events must contain curated public background only')
     if READER['visibility']!='public' or READER['scope']!='opening-only':
         raise ValueError('Reader guide must be explicitly public and opening-only')
     if ATLAS['visibility'] != 'public' or ATLAS['status'] != 'proposed':

@@ -129,6 +129,28 @@ def main():
         if realm['familyCrest']: assert (OUT/realm['familyCrest']).exists()
         if realm['id'] in {'closed-kingdom','kingless-kingdom'}:assert realm['familyCrest'] is None
     assert next(r for r in reader['heraldry'] if r['id']=='closed-kingdom')['kind']=='reference'
+    events=json.loads((ROOT/'content/events.json').read_text())
+    assert events['visibility']=='public' and events['scope']=='background-only'
+    public_articles={a['slug']:a for a in content['articles']}
+    event_slugs={x['slug'] for x in events['events']}
+    assert len(event_slugs)==len(events['events'])==8
+    places=json.loads((ROOT/'content/atlas.json').read_text())['places']
+    for event in events['events']:
+        assert set(event)=={'slug','title','kind','period','regions','people','topics','place','summary','knowledge','pressure'}, 'Unexpected event metadata requires public review'
+        a=public_articles[event['slug']]
+        assert a['category']=='events' and a['status']=='proposed'
+        assert a['title']==event['title'] and a['description']==event['summary']
+        assert event['regions'] and event['topics'] and event['people']
+        assert all(public_articles[s]['category']=='kingdoms' for s in event['regions'])
+        assert all(s in cast for s in event['people'])
+        assert all(s in public_articles for s in event['topics'])
+        place=next(p for p in places if p['id']==event['place'])
+        assert place['kingdom'] in event['regions'] and place['kingdom']!='closed-kingdom'
+        for slug in event['regions']+event['people']+event['topics']:
+            assert event['slug'] in public_articles[slug]['related'], 'Missing return link to event'
+        assert (OUT/f'wiki/{event["slug"]}/index.html').exists()
+    for path in ['wiki/fantasy-events/index.html','categories/events/index.html']:
+        assert (OUT/path).read_text().count('class="event-card"')==8
     atlas=json.loads((ROOT/'content/atlas.json').read_text())
     assert atlas['visibility']=='public' and atlas['status']=='proposed'
     kingdoms={k['id']:k for k in atlas['kingdoms']}
@@ -200,6 +222,7 @@ def main():
     print('PASS: 9 proposed regions, 40 landmarks, a schematic closed island, no gaps or overlaps, and land routes')
     print('PASS: visible English coverage, bilingual SVG labels, search readings, and unchanged map identifiers')
     print('PASS: 19 portraits, reviewed opening-only relationships, 9 provisional realm symbols and 41 safe chapter labels')
+    print('PASS: 8 proposed background events, public-only metadata, reciprocal connections and existing map locations')
 
 
 if __name__ == '__main__':
