@@ -107,7 +107,13 @@ def main():
     atlas=json.loads((ROOT/'content/atlas.json').read_text())
     assert atlas['visibility']=='public' and atlas['status']=='proposed'
     kingdoms={k['id']:k for k in atlas['kingdoms']}
-    assert len(kingdoms)==7
+    assert len(kingdoms)==9
+    mapped={k:v for k,v in kingdoms.items() if v['mapped']}
+    unmapped={k:v for k,v in kingdoms.items() if not v['mapped']}
+    assert len(mapped)==7 and set(unmapped)=={'closed-kingdom','kingless-kingdom'}
+    for k in unmapped.values():
+        assert k['polygon'] is None and k['view'] is None and k['label'] is None, 'Unspecified kingdoms must not acquire invented coordinates'
+    assert len([a for a in content['articles'] if a['category']=='kingdoms'])==9
     place_ids={p['id'] for p in atlas['places']}
     assert len(place_ids)==len(atlas['places'])==35, 'Expected 35 unique places'
     for p in atlas['places']:
@@ -115,13 +121,15 @@ def main():
         assert p['kingdom'] in kingdoms and inside(p['point'],kingdoms[p['kingdom']]['polygon']), f'Place outside its region: {p["id"]}'
         assert any(inside(p['point'],poly) for poly in [atlas['mainland']]+atlas['islands']), f'Landmark in water: {p["id"]}'
         assert reading(p['name']), f'Missing place pronunciation: {p["id"]}'
-    for k in atlas['kingdoms']:
+    for k in mapped.values():
         assert reading(k['title']), f'Missing region pronunciation: {k["id"]}'
     # Every map label has an adjacent reading in the exported vector, not only
     # in the inspector. Native select options and the JS data must remain valid.
     from xml.etree import ElementTree
     svg=ElementTree.parse(OUT/'assets/neverlands-atlas.svg')
     ns={'s':'http://www.w3.org/2000/svg'}
+    map_regions=svg.findall('.//s:path[@class="map-region"]',ns)
+    assert {r.attrib['data-region'] for r in map_regions}==set(mapped), 'Only located kingdoms may have map polygons'
     for label in svg.findall('.//s:text',ns):
         if re.search('[A-Za-z]{2,}',label.text or ''):
             assert label.find('s:tspan',ns) is not None, 'Map label lacks a visible Thai reading'
@@ -137,13 +145,15 @@ def main():
     rendered_atlas=json.loads(''.join(payload.parts))
     assert [p['id'] for p in rendered_atlas['places']]==[p['id'] for p in atlas['places']]
     assert all('('+reading(original['name'])+')' in rendered['name'] for original,rendered in zip(atlas['places'],rendered_atlas['places']))
-    assert all('('+reading(a['title'])+')' in next(r for r in articles if r['slug']==a['id'])['title'] for a in atlas['kingdoms'])
+    assert all('('+reading(a['title'])+')' in next(r for r in articles if r['slug']==a['id'])['title'] for a in mapped.values())
+    assert all(next(r for r in articles if r['slug']==a['id'])['title']==a['title'] for a in unmapped.values())
+    assert {k['id'] for k in rendered_atlas['kingdoms']}==set(kingdoms)
     for k in kingdoms:
-        assert sum(p['kingdom']==k for p in atlas['places'])==5
+        assert sum(p['kingdom']==k for p in atlas['places'])==(5 if k in mapped else 0)
     for x in range(307,1260,13):
         for y in range(67,930,13):
             if inside((x,y),atlas['mainland']):
-                assert sum(inside((x,y),k['polygon']) for k in kingdoms.values())==1, 'Gap or overlap between proposed regions'
+                assert sum(inside((x,y),k['polygon']) for k in mapped.values())==1, 'Gap or overlap between proposed regions'
     # A plotted land route must not cross the gulf just to connect two endpoints.
     for route in atlas['routes']:
         if route['kind']!='land': continue
@@ -152,7 +162,7 @@ def main():
                 point=(a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1]))
                 assert inside(point,atlas['mainland']), f'Land route crosses water: {route["id"]}'
     print(f'PASS: {len(pages)} pages, {count} internal links, metadata, fragments, and public-content boundary')
-    print('PASS: 7 proposed regions, 35 placed landmarks, regional coverage, and land routes')
+    print('PASS: 9 kingdoms, 7 proposed map regions, 2 explicitly unlocated kingdoms, 35 placed landmarks, and land routes')
     print('PASS: visible English coverage, bilingual SVG labels, search readings, and unchanged map identifiers')
 
 

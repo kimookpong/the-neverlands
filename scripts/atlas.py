@@ -52,10 +52,11 @@ def coast_detail(points, seed):
 
 
 def render_svg(data, interactive=True):
+    mapped=[k for k in data['kingdoms'] if k['mapped']]
     coast = polygon(coast_detail(data['mainland'], 27))
     land = coast + ' ' + ' '.join(polygon(island) for island in data['islands'])
     regions = []
-    for k in data['kingdoms']:
+    for k in mapped:
         attrs = f'role="button" tabindex="0" aria-label="สำรวจ {e(annotate(k["title"]))}" aria-pressed="false"' if interactive else ''
         regions.append(f'<path class="map-region" data-region="{k["id"]}" d="{polygon(k["polygon"])}" fill="{k["color"]}" {attrs}><title>{e(annotate(k["title"]))} — {e(k["position"])}</title></path>')
     mountains = []
@@ -76,7 +77,7 @@ def render_svg(data, interactive=True):
                 trees.append(f'<g transform="translate({x} {y})"><path d="M0,3V13"/><circle cx="0" cy="0" r="7"/></g>')
     rivers = ''.join(f'<path d="{line(r["points"])}" stroke-width="{r["width"]}"><title>{e(annotate(r["name"]))}</title></path>' for r in data['rivers'])
     routes = ''.join(f'<path class="map-route route-{r["kind"]}" d="{line(r["points"])}"><title>{e(annotate(r["name"]))}</title></path>' for r in data['routes'])
-    labels = ''.join(svg_label(k['title'].upper(),k['label'][0],k['label'][1],'region-label') for k in data['kingdoms'])
+    labels = ''.join(svg_label(k['title'].upper(),k['label'][0],k['label'][1],'region-label') for k in mapped)
     markers=[]
     for p in data['places']:
         x,y=p['point']
@@ -100,7 +101,7 @@ def render_svg(data, interactive=True):
           {svg_label(p['name'],dx,dy,'place-label',f'text-anchor="{anchor}"')}</g>''')
     return f'''<svg xmlns="http://www.w3.org/2000/svg" id="atlas-map" viewBox="0 0 1440 1040" role="group" aria-labelledby="atlas-svg-title atlas-svg-desc">
       <title id="atlas-svg-title">{e(annotate('The Neverlands'))} — แผนที่ทวีปข้อเสนอ 0.1</title>
-      <desc id="atlas-svg-desc">{e(annotate('เจ็ดภูมิภาครอบอ่าวที่เปิดทางตะวันตก Karveth อยู่เหนือ Eldraven อยู่กลาง Aurevan อยู่ตะวันตกเฉียงเหนือ Varessia อยู่ฝั่งเหนือปากอ่าว Myrthen อยู่ฝั่งใต้ Sylvara อยู่ตะวันออก และ Drakoria อยู่ตะวันออกเฉียงใต้ จุดทั้งหมดมีรายละเอียดในรายชื่อสถานที่ด้านล่าง'))}</desc>
+      <desc id="atlas-svg-desc">{e(annotate('โลกเก้าอาณาจักร ผังข้อเสนอเจ็ดภูมิภาคเดิมรอบอ่าวที่เปิดทางตะวันตก Karveth อยู่เหนือ Eldraven อยู่กลาง Aurevan อยู่ตะวันตกเฉียงเหนือ Varessia อยู่ฝั่งเหนือปากอ่าว Myrthen อยู่ฝั่งใต้ Sylvara อยู่ตะวันออก และ Drakoria อยู่ตะวันออกเฉียงใต้ อาณาจักรปิดกับอาณาจักรไร้กษัตริย์ยังไม่กำหนดที่ตั้ง'))}</desc>
       <defs><clipPath id="atlas-land-clip"><path d="{land}"/></clipPath>
       <pattern id="atlas-grid" width="125" height="125" patternUnits="userSpaceOnUse"><path d="M125,0 H0 V125" fill="none" stroke="#738b85" stroke-width=".6" opacity=".22"/></pattern>
       <pattern id="atlas-grain" width="7" height="7" patternUnits="userSpaceOnUse"><circle cx="1" cy="1" r=".45" fill="#6b6249" opacity=".1"/></pattern>
@@ -152,7 +153,7 @@ def render_svg(data, interactive=True):
       {svg_label('Veyr',875,454,'feature-label')}
       {svg_label('Lethi',568,476,'feature-label')}
       <g class="map-places">{''.join(markers)}</g>
-      <g transform="translate(58 65)" fill="#374937"><text font-size="30" letter-spacing="1">THE NEVERLANDS<tspan class="map-reading" x="0" dy="23">(เดอะ เนเวอร์แลนด์ส)</tspan></text><text y="44" font-size="12" font-family="Thonburi,Tahoma,sans-serif">แผนที่ทวีปข้อเสนอ · รุ่น 0.1</text></g>
+      <g transform="translate(58 65)" fill="#374937"><text font-size="30" letter-spacing="1">THE NEVERLANDS<tspan class="map-reading" x="0" dy="23">(เดอะ เนเวอร์แลนด์ส)</tspan></text><text y="44" font-size="12" font-family="Thonburi,Tahoma,sans-serif">โลก {len(data['kingdoms'])} อาณาจักร · ผังข้อเสนอ {len(mapped)} แห่ง</text><text y="62" font-size="11" font-family="Thonburi,Tahoma,sans-serif">อีก {len(data['kingdoms'])-len(mapped)} แห่งยังไม่กำหนดที่ตั้ง</text></g>
       <g transform="translate(62 165)"><rect width="193" height="177" rx="2" fill="#e5e4d2" stroke="#91a08c"/><text x="14" y="24" fill="#5b6751" font-size="10" letter-spacing="1">OLD MAINLAND<tspan class="map-reading" x="14" dy="17">(โอลด์ เมนแลนด์) · นอกกรอบ</tspan></text><path d="M22,64 L43,48 L63,55 L75,85 L61,98 L68,114 L49,126 L29,116 L18,93Z" fill="#b2b795" stroke="#7a8567"/><path d="M76,86 Q135,84 165,126" stroke="#7e6d9d" stroke-width="1.5" stroke-dasharray="3 5" fill="none"/><path d="M155,121 L166,127 L164,116" stroke="#7e6d9d" fill="none"/><text x="14" y="150" font-size="11" font-family="Thonburi,Tahoma,sans-serif" fill="#68745d">3,000–4,500 กม. · ข้อเสนอ</text><text x="14" y="168" font-size="10" font-family="Thonburi,Tahoma,sans-serif" fill="#68745d">ภาพย่อใช้คนละมาตราส่วนกับทวีป</text></g>
       <g transform="translate(1345 125)" stroke="#56644a" fill="#56644a"><path d="M0,5V95 M-30,52H30" stroke-width="1"/><path d="M0,5 L-9,53 L0,43 L9,53Z"/><path d="M0,95 L-5,52 L0,61 L5,52Z" fill="none"/><circle cy="52" r="19" fill="none" stroke-opacity=".5"/><text y="-7" text-anchor="middle" stroke="none" font-size="13" font-family="Thonburi,Tahoma,sans-serif">เหนือ</text></g>
       <g transform="translate(60 924)" fill="#46543e" font-family="Thonburi,Tahoma,sans-serif"><text font-size="12">มาตราส่วนแนวคิด · ไม่ใช่ผลสำรวจ</text><path d="M0,20H250 M0,15V25 M125,15V25 M250,15V25" stroke="#46543e" stroke-width="2"/><text y="42" font-size="11">0</text><text x="114" y="42" font-size="11">250</text><text x="230" y="42" font-size="11">500 กม.</text><text y="66" font-size="11">แนวภูมิภาคเป็นข้อเสนอ ไม่ใช่แนวควบคุมทางทหาร</text></g>
@@ -160,9 +161,13 @@ def render_svg(data, interactive=True):
 
 
 def atlas_block(data, base):
+    mapped=[k for k in data['kingdoms'] if k['mapped']]
     options=''.join(f'<option value="{k["id"]}">{e(k["title"])}</option>' for k in data['kingdoms'])
     static=[]
     for k in data['kingdoms']:
+        if not k['mapped']:
+            static.append(f'''<details class="atlas-region-detail" id="region-{k['id']}"><summary><span class="atlas-swatch" style="background:{k['color']}"></span><span class="atlas-region-name">{e(k['title'])}</span><span>ยังไม่ระบุที่ตั้ง</span></summary><div class="atlas-region-copy"><p>{e(k['summary'])}</p><p>ชื่อจริง ภูมิประเทศ พรมแดน และสถานที่สำคัญยังไม่กำหนด</p><a class="text-link" href="{base}wiki/{k['id']}/">อ่านข้อมูลที่ยืนยันแล้ว →</a></div></details>''')
+            continue
         places=''.join(f'''<li id="place-{p['id']}"><div><span class="atlas-place-type">{KINDS[p['kind']]}</span><h4>{e(p['thai'])} <span>{e(p['name'])}</span></h4></div><p>{e(p['role'])}</p><p><strong>ความสำคัญ:</strong> {e(p['strategic'])}</p><p class="atlas-place-caveat">{e(p['dependency'])}</p><button type="button" class="atlas-locate" data-locate="{p['id']}">ดูตำแหน่งบนแผนที่ ↗</button></li>''' for p in data['places'] if p['kingdom']==k['id'])
         static.append(f'''<details class="atlas-region-detail" id="region-{k['id']}"><summary><span class="atlas-swatch" style="background:{k['color']}"></span><span class="atlas-region-name">{e(k['title'])}</span><span>5 สถานที่สำคัญ</span></summary><div class="atlas-region-copy"><p>{e(k['terrain'])}</p><dl><div><dt>ภูมิอากาศที่เสนอ</dt><dd>{e(k['climate'])}</dd></div><div><dt>ทรัพยากรและเศรษฐกิจ</dt><dd>{e(k['resources'])}</dd></div><div><dt>อำนาจต่อรอง</dt><dd>{e(k['leverage'])}</dd></div><div><dt>ข้อจำกัด</dt><dd>{e(k['vulnerability'])}</dd></div></dl></div><ol class="atlas-place-list">{places}</ol><a class="text-link" href="{base}wiki/{k['id']}/">อ่านเรื่อง {e(k['title'])} →</a></details>''')
     routes=''.join(f'<li><strong>{e(r["name"])}</strong><p>{e(r["description"])}</p></li>' for r in data['routes'])
@@ -171,9 +176,11 @@ def atlas_block(data, base):
     return f'''<section class="atlas-experience" aria-labelledby="atlas-heading">
       <div class="atlas-heading"><div><p class="eyebrow">ภูมิประเทศก่อนพรมแดน</p><h2 id="atlas-heading">แผนที่ทวีปและสถานที่สำคัญ</h2></div><span class="atlas-proposal">แผนที่ข้อเสนอ · 0.1</span></div>
       <p class="atlas-disclaimer">ชื่อ ภูมิประเทศ เมือง และขอบเขตทั้งหมดในแผนที่เป็นข้อเสนอ ยังไม่ล็อก Canon สีแสดงภูมิภาคอ้างอิง ไม่ใช่แนวควบคุมทางทหารในทุกช่วงเรื่อง</p>
+      <p class="atlas-map-scope">โลกมี {len(data['kingdoms'])} อาณาจักร · {len(mapped)} แห่งมีผังข้อเสนอ · อีก {len(data['kingdoms'])-len(mapped)} แห่งยังไม่ระบุที่ตั้ง</p>
       <div class="atlas-toolbar"><label for="atlas-region">เลือกดินแดน <select id="atlas-region"><option value="">ภาพรวมทั้งทวีป</option>{options}</select></label><fieldset><legend class="sr-only">ชั้นข้อมูลแผนที่</legend><label><input id="atlas-terrain" type="checkbox" checked> ภูมิประเทศ</label><label><input id="atlas-trade" type="checkbox" checked> การค้า</label><label><input id="atlas-migration" type="checkbox"> เส้นทางอพยพที่เสนอ</label></fieldset></div>
-      <div class="atlas-layout"><div class="atlas-map-wrap"><div class="atlas-map-viewport">{render_svg(data)}</div><div class="atlas-zoom"><button type="button" id="atlas-zoom-in" aria-label="ขยายแผนที่">+</button><button type="button" id="atlas-zoom-out" aria-label="ย่อแผนที่">−</button><button type="button" id="atlas-reset">ทั้งทวีป</button></div><div class="atlas-legend"><span>★ เมืองศูนย์กลาง</span><span>○ เมือง / ท่าเรือ</span><span>□ ป้อม / ด่าน</span><span>◇ ทรัพยากร / ธรรมชาติ</span><span><i class="legend-land"></i> ทางบก</span><span><i class="legend-sea"></i> ทางเรือ</span></div></div>
-      <aside class="atlas-inspector" aria-label="รายละเอียดดินแดนที่เลือก"><p class="eyebrow" id="atlas-inspector-kicker">7 ภูมิภาค · 35 สถานที่</p><h3 id="atlas-region-title">โลกที่ต้องพึ่งพากัน</h3><p id="atlas-region-text">เลือกพื้นที่หรือจุดบนแผนที่เพื่ออ่านรายละเอียด อ่าวเวย์ร์เชื่อมลุ่มน้ำกลางกับทะเลเปิด โดยมี Varessia และ Myrthen อยู่คนละฝั่งของปากอ่าว</p><dl id="atlas-region-facts"></dl><div id="atlas-place-detail" hidden></div><div id="atlas-place-buttons"></div><p id="atlas-selection-status" role="status" aria-live="polite"></p></aside></div>
+      <p class="atlas-unmapped-alert" id="atlas-unmapped-alert" role="status" hidden></p>
+      <div class="atlas-layout"><div class="atlas-map-wrap"><div class="atlas-map-viewport">{render_svg(data)}</div><div class="atlas-zoom"><button type="button" id="atlas-zoom-in" aria-label="ขยายแผนที่">+</button><button type="button" id="atlas-zoom-out" aria-label="ย่อแผนที่">−</button><button type="button" id="atlas-reset">ภาพรวม</button></div><div class="atlas-legend"><span>★ เมืองศูนย์กลาง</span><span>○ เมือง / ท่าเรือ</span><span>□ ป้อม / ด่าน</span><span>◇ ทรัพยากร / ธรรมชาติ</span><span><i class="legend-land"></i> ทางบก</span><span><i class="legend-sea"></i> ทางเรือ</span></div></div>
+      <aside class="atlas-inspector" aria-label="รายละเอียดดินแดนที่เลือก"><p class="eyebrow" id="atlas-inspector-kicker">{len(data['kingdoms'])} อาณาจักร · {len(mapped)} แห่งมีผังข้อเสนอ</p><h3 id="atlas-region-title">โลกที่ต้องพึ่งพากัน</h3><p id="atlas-region-text">เลือกพื้นที่หรือชื่ออาณาจักรเพื่ออ่านรายละเอียด อาณาจักรปิดและอาณาจักรไร้กษัตริย์ยังไม่มีพิกัดบนแผนที่</p><dl id="atlas-region-facts"></dl><div id="atlas-place-detail" hidden></div><div id="atlas-place-buttons"></div><p id="atlas-selection-status" role="status" aria-live="polite"></p></aside></div>
       <div class="atlas-reading-links"><a href="{base}assets/neverlands-atlas.svg" download="the-neverlands-proposed-atlas.svg">ดาวน์โหลดแผนที่ SVG ↗</a><span>เหนืออยู่ด้านบน · ระยะทางเป็นมาตราส่วนแนวคิด</span></div>
       <section class="atlas-explanation"><h3>เหตุผลที่วางภูมิประเทศแบบนี้</h3><p>แนวเขาทางเหนือให้แร่ ต้นน้ำ และข้อจำกัดการขนส่ง ลุ่มน้ำกลางรองรับอาหาร เมือง และตลาด อ่าวลึกทำให้การค้าในแผ่นดินต้องเจรจากับอำนาจทางทะเล ส่วนชายฝั่งตะวันออกและท่าเรือใต้ช่วยให้ไม่มีฝ่ายใดผูกขาดทางออกของทั้งทวีป</p><p>ป่า Sylvara รับฝนตามฤดูจากทะเลตะวันออก จึงไม่ต้องอธิบายว่าป่าชื้นเกิดจากเวทมนตร์ ขณะที่แนวเขารองและหลายลุ่มน้ำทำให้ Drakoria มีศูนย์อำนาจกระจายตัวได้</p></section>
       <section class="atlas-locations" aria-labelledby="atlas-locations-heading"><div class="section-heading"><div><p class="eyebrow">สถานที่ที่กำหนดการเมือง</p><h3 id="atlas-locations-heading">สถานที่สำคัญของแต่ละอาณาจักร</h3></div><span class="section-note">ทั้งหมดเป็นข้อเสนอและชื่อชั่วคราว</span></div>{''.join(static)}</section>

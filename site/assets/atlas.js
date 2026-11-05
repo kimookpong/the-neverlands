@@ -15,6 +15,9 @@
   const zoomOut = document.getElementById('atlas-zoom-out');
   const regions = new Map(data.kingdoms.map(k => [k.id,k]));
   const places = new Map(data.places.map(p => [p.id,p]));
+  const mappedCount = data.kingdoms.filter(k => k.mapped).length;
+  const catalogSummary = `${data.kingdoms.length} อาณาจักร · ${mappedCount} แห่งมีผังข้อเสนอ`;
+  const unmappedAlert = document.getElementById('atlas-unmapped-alert');
   const initial = new URLSearchParams(location.search);
   let selectedRegion = '', selectedPlace = '', zoom = 1, center = [720,520];
 
@@ -35,7 +38,7 @@
     zoomOut.disabled = zoom <= 1;
   }
   function fit(region) {
-    if (!region) { setView(720,520,1); return; }
+    if (!region || !region.mapped) { setView(720,520,1); return; }
     const [x,y,w,h] = region.view;
     setView(x+w/2,y+h/2,Math.min(1440/w,1040/h));
   }
@@ -50,12 +53,15 @@
   function select(regionId,placeId='',fitMap=true) {
     const region = regions.get(regionId);
     const place = places.get(placeId);
+    const regionPlaces = data.places.filter(p => p.kingdom === regionId);
     selectedRegion = region ? region.id : '';
     selectedPlace = place && place.kingdom === selectedRegion ? place.id : '';
     picker.value = selectedRegion;
-    document.getElementById('atlas-inspector-kicker').textContent = region ? 'ภูมิภาคข้อเสนอ · 5 สถานที่' : '7 ภูมิภาค · 35 สถานที่';
+    document.getElementById('atlas-inspector-kicker').textContent = region ? region.mapped ? `ภูมิภาคข้อเสนอ · ${regionPlaces.length} สถานที่` : 'ยืนยันลักษณะแล้ว · ยังไม่ระบุที่ตั้ง' : catalogSummary;
     title.textContent = region ? region.title : 'โลกที่ต้องพึ่งพากัน';
-    description.textContent = region ? region.terrain : 'เลือกพื้นที่หรือจุดบนแผนที่เพื่ออ่านรายละเอียด อ่าวเวย์ร์เชื่อมลุ่มน้ำกลางกับทะเลเปิด โดยมี Varessia และ Myrthen อยู่คนละฝั่งของปากอ่าว';
+    description.textContent = region ? region.summary || region.terrain : 'เลือกพื้นที่หรือชื่ออาณาจักรเพื่ออ่านรายละเอียด อาณาจักรปิดและอาณาจักรไร้กษัตริย์ยังไม่มีพิกัดบนแผนที่';
+    unmappedAlert.hidden = !region || region.mapped;
+    unmappedAlert.textContent = region && !region.mapped ? `${region.title} ยังไม่ระบุที่ตั้ง จึงแสดงผัง ${mappedCount} ภูมิภาคเดิมโดยไม่ปักหมุดใหม่` : '';
     facts.replaceChildren(); buttons.replaceChildren(); detail.replaceChildren();
     detail.hidden = !selectedPlace;
     if (region) {
@@ -63,7 +69,8 @@
         const row = node('div'); row.append(node('dt','',label),node('dd','',region[key])); facts.append(row);
       }
       buttons.append(node('h4','','สถานที่สำคัญ'));
-      for (const p of data.places.filter(p=>p.kingdom===region.id)) {
+      if (!region.mapped) buttons.append(node('p','atlas-no-location','ยังไม่มีข้อมูลที่ตั้งและสถานที่สำคัญที่กำหนดไว้'));
+      for (const p of regionPlaces) {
         const button = node('button','atlas-place-button');
         button.type = 'button';
         button.append(node('span','',p.thai),node('small','',p.name));
@@ -80,19 +87,19 @@
     for (const shape of map.querySelectorAll('.map-region')) {
       const active=shape.dataset.region===selectedRegion;
       shape.classList.toggle('is-active',active);
-      shape.classList.toggle('is-muted',!!selectedRegion&&!active);
+      shape.classList.toggle('is-muted',!!region && region.mapped && !active);
       shape.setAttribute('aria-pressed',String(active));
     }
     for (const marker of map.querySelectorAll('.map-place')) {
       const active=marker.dataset.region===selectedRegion;
       const current=marker.dataset.place===selectedPlace;
       marker.classList.toggle('is-active',active);
-      marker.classList.toggle('is-muted',!!selectedRegion&&!active);
+      marker.classList.toggle('is-muted',!!region && region.mapped && !active);
       marker.classList.toggle('is-selected',current);
       marker.setAttribute('aria-pressed',String(current));
     }
     if (fitMap) fit(region);
-    status.textContent=selectedPlace ? `เลือก ${place.thai} ใน ${region.title}` : region ? `เลือก ${region.title} · 5 สถานที่สำคัญ` : 'แสดงภาพรวม 7 ภูมิภาค';
+    status.textContent=selectedPlace ? `เลือก ${place.thai} ใน ${region.title}` : region ? region.mapped ? `เลือก ${region.title} · ${regionPlaces.length} สถานที่สำคัญ` : `เลือก ${region.title} · ยังไม่ระบุที่ตั้ง` : catalogSummary;
     updateURL();
   }
   function activate(target) {

@@ -126,10 +126,10 @@ def home():
       <section class="section" aria-labelledby="start-heading"><div class="section-heading"><div><p class="eyebrow">ก้าวแรกสู่จักรวาลนี้</p><h2 id="start-heading">เริ่มต้นที่นี่</h2></div><span class="section-note">สามบทความเพื่อรู้จักจักรวาลนี้</span></div>
       <div class="featured-grid">{''.join(card(ARTICLES[s],i) for i,s in enumerate(['world','seven-kingdoms','caelan'],1))}</div></section>
       <section class="section" aria-labelledby="explore-heading"><div class="section-heading"><div><p class="eyebrow">สำรวจคลังบันทึก</p><h2 id="explore-heading">เปิดบันทึกของโลก</h2></div><span class="section-note">{len(ARTICLES)} บทความ · {len(CATEGORIES)} หมวดหมู่</span></div><div class="category-grid">{category_cards}</div></section>
-      <section class="kingdom-section" aria-labelledby="kingdom-heading"><div class="kingdom-intro"><p class="eyebrow">เจ็ดดินแดนบนทวีปเดียว</p><h2 id="kingdom-heading">เจ็ดอาณาจักร<br><em>เจ็ดฐานอำนาจ</em></h2><p>จากราชวงศ์เก่าแก่ถึงเมืองท่า<br>จากโรงช่างบนภูเขาถึงผืนป่า<br>แต่ละดินแดนมีบทบาทของตนเอง</p><span class="inline-note">ชื่อทั้งหมดเป็นชื่อชั่วคราว</span><a class="text-link" href="{article_url('seven-kingdoms')}">อ่านภาพรวม <span aria-hidden="true">→</span></a></div><div class="kingdom-list">{kingdoms}</div></section>
+      <section class="kingdom-section" aria-labelledby="kingdom-heading"><div class="kingdom-intro"><p class="eyebrow">โลกของเก้าอาณาจักร</p><h2 id="kingdom-heading">เก้าอาณาจักร<br><em>หลายรูปแบบของอำนาจ</em></h2><p>จากราชวงศ์เก่าแก่ถึงดินแดนปิด<br>จากเมืองท่าถึงอาณาจักรไร้กษัตริย์<br>แต่ละดินแดนมีบทบาทของตนเอง</p><span class="inline-note">ชื่อทั้งหมดเป็นชื่อชั่วคราว</span><a class="text-link" href="{article_url('seven-kingdoms')}">อ่านภาพรวม <span aria-hidden="true">→</span></a></div><div class="kingdom-list">{kingdoms}</div></section>
       <aside class="editorial-note"><span aria-hidden="true">✦</span><div><h2>โลกนี้ยังอยู่ระหว่างการเขียน</h2><p>ชื่อ ตัวละคร และรายละเอียดบางส่วนอาจเปลี่ยนแปลง แผนที่ข้อเสนอรุ่น 0.1 มีสถานที่สำคัญ 35 แห่งให้สำรวจ โดยยังไม่ล็อกชื่อหรือพรมแดน</p></div><a href="{article_url('atlas')}">สำรวจแผนที่ <span aria-hidden="true">↗</span></a></aside>
     </div>'''
-    return shell('The Neverlands', 'Wiki ภาษาไทยสำหรับผู้อ่าน The Neverlands สำรวจโลก เจ็ดอาณาจักร ตัวละคร และเวทมนตร์ โดยไม่เปิดเผยความลับหรือตอนจบ', body)
+    return shell('The Neverlands', 'Wiki ภาษาไทยสำหรับผู้อ่าน The Neverlands สำรวจโลก เก้าอาณาจักร ตัวละคร และเวทมนตร์ โดยไม่เปิดเผยความลับหรือตอนจบ', body)
 
 
 def article_page(a):
@@ -140,7 +140,9 @@ def article_page(a):
     facts = ''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k,v in a['facts'])
     related = ''.join(card(ARTICLES[s]) for s in a['related'])
     atlas = atlas_block(ATLAS,BASE) if a['slug'] == 'atlas' else ''
-    map_link = f'<a class="kingdom-map-link" href="{article_url("atlas")}?region={a["slug"]}">ดูตำแหน่งและสถานที่สำคัญบนแผนที่ข้อเสนอ ↗</a>' if a['category'] == 'kingdoms' else ''
+    has_map = next((k['mapped'] for k in ATLAS['kingdoms'] if k['id']==a['slug']),False)
+    map_label = 'ดูตำแหน่งและสถานที่สำคัญบนแผนที่ข้อเสนอ' if has_map else 'ดูสถานะข้อมูลในคลังแผนที่'
+    map_link = f'<a class="kingdom-map-link" href="{article_url("atlas")}?region={a["slug"]}">{map_label} ↗</a>' if a['category'] == 'kingdoms' else ''
     body = f'''<article class="article-page {'atlas-article' if atlas else ''}"><div class="article-breadcrumb"><a href="{url()}">Wiki</a><span>/</span><a href="{url('categories/'+c['id']+'/')}">{e(c['title'])}</a></div>
       <header class="article-header"><p class="eyebrow">{e(a['subtitle'])}</p><h1>{e(a['title'])}</h1><p class="article-lead">{e(a['description'])}</p><div class="article-meta">{badge(a)}<span>ข้อมูลสำหรับผู้อ่าน</span><span>Wiki รุ่น {e(DATA['version'])}</span></div>{map_link}</header>
       {atlas}

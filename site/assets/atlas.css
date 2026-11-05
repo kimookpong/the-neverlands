@@ -38,3 +38,4 @@
 .atlas-region-name .pronunciation{display:block;font:400 12px/1.7 var(--sans);letter-spacing:normal;margin-top:1px}
 .atlas-region-detail>summary{gap:12px}.atlas-region-detail>summary>.atlas-region-name{font:inherit;color:inherit;margin-left:0}
 .atlas-inspector h3 .pronunciation{font-size:14px}.atlas-place-button small{font-family:var(--sans);font-size:10px;line-height:1.8}
+.atlas-map-scope{font-size:12px;line-height:1.9;color:var(--gold);margin-bottom:14px}.atlas-unmapped-alert{padding:13px 16px;margin:0 0 15px;border:1px solid var(--line);background:var(--panel-hover);color:var(--ink);font-size:12px;line-height:1.9}.atlas-no-location{font-size:12px;color:var(--muted);line-height:1.9}
