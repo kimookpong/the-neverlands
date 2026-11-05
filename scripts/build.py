@@ -18,7 +18,8 @@ ARTICLES = {a['slug']: a for a in DATA['articles']}
 CATEGORIES = {c['id']: c for c in DATA['categories']}
 STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': 'ชื่อชั่วคราว',
           'developing': 'อยู่ระหว่างออกแบบ', 'in-world': 'เรื่องเล่าทางการ',
-          'proposed': 'ข้อเสนอ · ยังไม่ล็อก Canon'}
+          'proposed': 'ข้อเสนอ · ยังไม่ล็อก Canon',
+          'legend': 'ตำนาน · ความจริงยังไม่ยืนยัน'}
 ICONS = {
  'world': '◎', 'history': '⌛', 'kingdoms': '♜', 'characters': '♙',
  'peoples': '❋', 'magic': '✧', 'technology': '⚒', 'timeline': '◷', 'atlas': '⌖',

@@ -68,6 +68,12 @@
       for (const [label,key] of [['ตำแหน่ง','position'],['ภูมิอากาศ','climate'],['ฐานเศรษฐกิจ','resources'],['อำนาจต่อรอง','leverage'],['ข้อจำกัด','vulnerability']]) {
         const row = node('div'); row.append(node('dt','',label),node('dd','',region[key])); facts.append(row);
       }
+      if (!region.mapped) {
+        const terrain = node('div'); terrain.append(node('dt','','ภูมิประเทศ'),node('dd','',region.terrain)); facts.append(terrain);
+      }
+      if (region.legend) {
+        const legend = node('div'); legend.append(node('dt','','ตำนาน · ยังไม่ยืนยันความจริง'),node('dd','',region.legend)); facts.append(legend);
+      }
       buttons.append(node('h4','','สถานที่สำคัญ'));
       if (!region.mapped) buttons.append(node('p','atlas-no-location','ยังไม่มีข้อมูลที่ตั้งและสถานที่สำคัญที่กำหนดไว้'));
       for (const p of regionPlaces) {

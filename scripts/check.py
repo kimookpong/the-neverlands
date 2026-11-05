@@ -114,8 +114,12 @@ def main():
     for k in unmapped.values():
         assert k['polygon'] is None and k['view'] is None and k['label'] is None, 'Unspecified kingdoms must not acquire invented coordinates'
     assert len([a for a in content['articles'] if a['category']=='kingdoms'])==9
+    assert kingdoms['closed-kingdom']['landform']=='island'
+    legend=next(a for a in content['articles'] if a['slug']=='tree-of-life')
+    assert legend['status']=='legend', 'The tree origin story must stay explicitly unverified lore'
     place_ids={p['id'] for p in atlas['places']}
     assert len(place_ids)==len(atlas['places'])==35, 'Expected 35 unique places'
+    assert 'tree-of-life' not in place_ids, 'A legendary tree must not acquire a factual map pin'
     for p in atlas['places']:
         assert p['visibility']=='public' and p['status']=='proposed'
         assert p['kingdom'] in kingdoms and inside(p['point'],kingdoms[p['kingdom']]['polygon']), f'Place outside its region: {p["id"]}'
