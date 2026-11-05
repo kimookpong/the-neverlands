@@ -1,0 +1,158 @@
+{
+  "visibility": "public",
+  "note": "ภาพแนวคิด ยังไม่ยืนยันรูปลักษณ์ถาวร",
+  "portraits": [
+    {
+      "character": "caelan",
+      "path": "assets/portraits/caelan.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "seraya",
+      "path": "assets/portraits/seraya.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "maeron",
+      "path": "assets/portraits/maeron.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "elira",
+      "path": "assets/portraits/elira-v2.webp",
+      "width": 1097,
+      "height": 1434,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "roderic",
+      "path": "assets/portraits/roderic.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "orven",
+      "path": "assets/portraits/orven.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "luceran",
+      "path": "assets/portraits/luceran-v2.webp",
+      "width": 1024,
+      "height": 1536,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "halvaren",
+      "path": "assets/portraits/halvaren.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "thessa",
+      "path": "assets/portraits/thessa-v2.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "damar",
+      "path": "assets/portraits/damar.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "nerys",
+      "path": "assets/portraits/nerys-v2.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "othrek",
+      "path": "assets/portraits/othrek.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "evara",
+      "path": "assets/portraits/evara-v2.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "ysol",
+      "path": "assets/portraits/ysol-v2.webp",
+      "width": 1024,
+      "height": 1536,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "kesra",
+      "path": "assets/portraits/kesra-v2.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "irsen",
+      "path": "assets/portraits/irsen-v2.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "rhuven",
+      "path": "assets/portraits/rhuven.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "saev",
+      "path": "assets/portraits/saev.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    },
+    {
+      "character": "vaelor",
+      "path": "assets/portraits/vaelor-v2.webp",
+      "width": 1086,
+      "height": 1448,
+      "provisional": true,
+      "method": "generated"
+    }
+  ]
+}

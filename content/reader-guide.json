@@ -1,0 +1,742 @@
+{
+  "version": "0.3",
+  "visibility": "public",
+  "scope": "opening-only",
+  "artNote": "ภาพและเครื่องหมายเป็นแนวคิดรูปลักษณ์ระหว่างพัฒนา ยังปรับได้",
+  "characters": [
+    {
+      "id": "caelan",
+      "name": "Caelan",
+      "thai": "เคแลน",
+      "affiliation": "วาเรสเซีย",
+      "kingdom": "varessia",
+      "role": "ผู้เติบโตท่ามกลางผลของสงคราม",
+      "bio": "เติบโตในวาเรสเซียโดยมีเมรอนดูแล ประสบการณ์การสูญเสียและภาระของผู้คนเป็นส่วนหนึ่งของภูมิหลังช่วงต้น",
+      "status": "working",
+      "portrait": "assets/portraits/caelan.webp",
+      "portraitAlt": "ภาพแนวคิดของเคแลน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "seraya",
+      "name": "Seraya Venn",
+      "thai": "เซรายา เวนน์",
+      "affiliation": "เมอร์เธน",
+      "kingdom": "myrthen",
+      "role": "นักการทูต",
+      "bio": "ผู้เจรจาจากเมอร์เธน สนใจการค้า ข้อตกลง และทางเลือกที่ทำให้ฝ่ายขัดแย้งยังพูดคุยกันได้",
+      "status": "working",
+      "portrait": "assets/portraits/seraya.webp",
+      "portraitAlt": "ภาพแนวคิดของเซรายา เวนน์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "maeron",
+      "name": "Maeron Vale",
+      "thai": "เมรอน เวล",
+      "affiliation": "ไม่ระบุสังกัด",
+      "kingdom": null,
+      "role": "อดีตทหารและผู้ดูแลเคแลน",
+      "bio": "อดีตทหารผู้ช่วยชีวิตและมีบทบาทเลี้ยงดูเคแลน ความระมัดระวังกับความห่วงใยเป็นลักษณะสำคัญที่เห็นได้ช่วงต้น",
+      "status": "working",
+      "portrait": "assets/portraits/maeron.webp",
+      "portraitAlt": "ภาพแนวคิดของเมรอน เวล ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "roderic",
+      "name": "Roderic IV",
+      "thai": "รอเดอริกที่สี่",
+      "affiliation": "เอลเดรเวน",
+      "kingdom": "eldraven",
+      "role": "กษัตริย์แห่งเอลเดรเวน",
+      "bio": "ผู้ครองเอลเดรเวนในช่วงต้นเรื่อง ราชสำนัก กองทัพ และผู้มีผลประโยชน์หลายฝ่ายเกี่ยวข้องกับอำนาจของพระองค์",
+      "status": "working",
+      "portrait": "assets/portraits/roderic.webp",
+      "portraitAlt": "ภาพแนวคิดของรอเดอริกที่สี่ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "elira",
+      "name": "Elira Venn",
+      "thai": "เอลิรา เวนน์",
+      "affiliation": "วาเรสเซีย",
+      "kingdom": "varessia",
+      "role": "นักพิมพ์และผู้ประสานข่าวสาร",
+      "bio": "ทำงานเกี่ยวกับสิ่งพิมพ์ การเผยแพร่ความคิด และเครือข่ายผู้คนในวาเรสเซีย เนื้อหาแต่ละชิ้นมีทั้งผู้ส่ง ผู้รับ และผู้ได้รับผล",
+      "status": "working",
+      "portrait": "assets/portraits/elira-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของเอลิรา เวนน์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "orven",
+      "name": "Orven",
+      "thai": "ออร์เวน",
+      "affiliation": "ไม่ระบุสังกัด",
+      "kingdom": null,
+      "role": "ผู้ดูแลบันทึก",
+      "bio": "ผู้ให้ความสำคัญกับที่มา ความครบถ้วน และข้อจำกัดของเอกสาร วางตัวเป็นกลางในการประเมินข้อมูล",
+      "status": "working",
+      "portrait": "assets/portraits/orven.webp",
+      "portraitAlt": "ภาพแนวคิดของออร์เวน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "luceran",
+      "name": "Prince Luceran Roderic",
+      "thai": "พรินซ์ ลูเซรัน รอเดอริก",
+      "affiliation": "เอลเดรเวน",
+      "kingdom": "eldraven",
+      "role": "เจ้าชายแห่งเอลเดรเวน",
+      "bio": "พระโอรสของรอเดอริกที่สี่ เป็นส่วนหนึ่งของราชสำนักเอลเดรเวน บทความนี้จำกัดสถานะช่วงต้นและไม่ระบุเส้นทางในอนาคต",
+      "status": "working",
+      "portrait": "assets/portraits/luceran-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของพรินซ์ ลูเซรัน รอเดอริก ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "halvaren",
+      "name": "Halvaren Dorr",
+      "thai": "ฮัลวาเรน ดอร์",
+      "affiliation": "แนวร่วมวาเรสเซีย–เอลเดรเวน",
+      "kingdom": null,
+      "role": "หัวหน้าขบวนการต่อต้าน",
+      "bio": "น้าชายของรอเดอริกที่สี่ ผู้ประสานขบวนการซึ่งมีผู้ร่วมงานและเครือข่ายอยู่ก่อนเคแลนเข้ามา มีความสำคัญต่อการจัดตั้งช่วงต้น",
+      "status": "working",
+      "portrait": "assets/portraits/halvaren.webp",
+      "portraitAlt": "ภาพแนวคิดของฮัลวาเรน ดอร์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "thessa",
+      "name": "Thessa Korr",
+      "thai": "เธสซา คอร์",
+      "affiliation": "วาเรสเซีย",
+      "kingdom": "varessia",
+      "role": "ผู้ประสานงานเสบียงชุมชน",
+      "bio": "บทบาทที่เสนอคือผู้จัดการข้อมูลอาหาร การแจกจ่าย และข้อร้องเรียนของครัวเรือน โดยต้องตอบคำถามจากผู้รับภาระจริง",
+      "status": "proposed",
+      "portrait": "assets/portraits/thessa-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของเธสซา คอร์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "damar",
+      "name": "Damar Vesk",
+      "thai": "ดามาร์ เวสก์",
+      "affiliation": "เอลเดรเวน",
+      "kingdom": "eldraven",
+      "role": "นายทหาร",
+      "bio": "บทบาทที่เสนอคือผู้มีประสบการณ์ด้านกำลังพล เสบียง และสายบังคับบัญชา ให้ความสำคัญกับกองทัพที่ทำงานต่อเนื่องได้",
+      "status": "proposed",
+      "portrait": "assets/portraits/damar.webp",
+      "portraitAlt": "ภาพแนวคิดของดามาร์ เวสก์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "nerys",
+      "name": "Nerys Ovrin",
+      "thai": "เนริส โอวริน",
+      "affiliation": "เมอร์เธน",
+      "kingdom": "myrthen",
+      "role": "ผู้เจรจาการเงินเดินเรือ",
+      "bio": "บทบาทที่เสนอคือผู้ประสานสินเชื่อและความเสี่ยงของการขนส่งทางทะเล มีภาระต่อเจ้าของเรือ ผู้ให้ทุน และผู้พึ่งพาการค้า",
+      "status": "proposed",
+      "portrait": "assets/portraits/nerys-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของเนริส โอวริน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "othrek",
+      "name": "Othrek Sarn",
+      "thai": "ออธเรก ซาร์น",
+      "affiliation": "คาร์เวธ",
+      "kingdom": "karveth",
+      "role": "ตัวแทนโรงช่างโลหะ",
+      "bio": "บทบาทที่เสนอเกี่ยวข้องกับงานโลหะ โรงช่าง แรงงาน และการส่งมอบสินค้า การผลิตมีข้อจำกัดด้านวัตถุดิบและชีวิตผู้ทำงาน",
+      "status": "proposed",
+      "portrait": "assets/portraits/othrek.webp",
+      "portraitAlt": "ภาพแนวคิดของออธเรก ซาร์น ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "ysol",
+      "name": "Ysol Vareth",
+      "thai": "อีซอล วาเร็ธ",
+      "affiliation": "ออเรแวน",
+      "kingdom": "aurevan",
+      "role": "ผู้เจรจาราชสำนัก",
+      "bio": "บทบาทที่เสนอคือผู้ต่อรองผลประโยชน์ของราชสำนักออเรแวน ต้องรับมือเงื่อนไขการทูตและกลุ่มอำนาจที่มีความต้องการต่างกัน",
+      "status": "proposed",
+      "portrait": "assets/portraits/ysol-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของอีซอล วาเร็ธ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "evara",
+      "name": "Evara Thenn",
+      "thai": "เอวารา เธนน์",
+      "affiliation": "ซิลวารา",
+      "kingdom": "sylvara",
+      "role": "ผู้ประสานชุมชนและผู้ดูแลความรู้ท้องถิ่น",
+      "bio": "บทบาทที่เสนอเชื่อมผู้คน สิทธิชุมชน และความรู้ที่สืบต่อกันในซิลวารา ยังไม่ยืนยันตำแหน่งทางศาสนาหรือความสามารถเฉพาะ",
+      "status": "proposed",
+      "portrait": "assets/portraits/evara-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของเอวารา เธนน์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "kesra",
+      "name": "Kesra Vey",
+      "thai": "เคสรา เวย์",
+      "affiliation": "ดราโคเรีย",
+      "kingdom": "drakoria",
+      "role": "ผู้เจรจาชุมชนชายแดน",
+      "bio": "บทบาทที่เสนอคือผู้ประสานข้อเรียกร้องของชุมชนซึ่งมีภาระและผลประโยชน์ต่างกันในดราโคเรีย",
+      "status": "proposed",
+      "portrait": "assets/portraits/kesra-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของเคสรา เวย์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "irsen",
+      "name": "Irsen Tal",
+      "thai": "เออร์เซน ทาล",
+      "affiliation": "ไม่ระบุสังกัด",
+      "kingdom": null,
+      "role": "ผู้รวบรวมบันทึกท้องถิ่น",
+      "bio": "บทบาทที่เสนอเกี่ยวข้องกับการเก็บเอกสาร คำให้การ และที่มาของข้อมูลท้องถิ่น บทความนี้แสดงเพียงชื่อใช้งานและขอบเขตงาน",
+      "status": "proposed",
+      "portrait": "assets/portraits/irsen-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของเออร์เซน ทาล ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "rhuven",
+      "name": "Rhuven",
+      "thai": "รูเวน",
+      "affiliation": "ชุมชนวอร์",
+      "kingdom": null,
+      "role": "ผู้เจรจาของชุมชนวอร์แห่งหนึ่ง",
+      "bio": "บทบาทที่เสนอคือผู้แทนชุมชนวอร์ที่มีข้อเรียกร้องและขอบเขตมอบอำนาจของตน ไม่ได้เป็นผู้แทนยักษ์ทั้งหมด",
+      "status": "proposed",
+      "portrait": "assets/portraits/rhuven.webp",
+      "portraitAlt": "ภาพแนวคิดของรูเวน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "saev",
+      "name": "Saev Neral",
+      "thai": "เซฟ เนรัล",
+      "affiliation": "ชุมชนเนไร",
+      "kingdom": null,
+      "role": "ผู้เจรจาของชุมชนเนไรแห่งหนึ่ง",
+      "bio": "บทบาทที่เสนอคือผู้แทนชุมชนชาวทะเลซึ่งมีชีวิตและสิทธิของตน ไม่ได้เป็นผู้แทนเนไรทุกชุมชน",
+      "status": "proposed",
+      "portrait": "assets/portraits/saev.webp",
+      "portraitAlt": "ภาพแนวคิดของเซฟ เนรัล ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    },
+    {
+      "id": "vaelor",
+      "name": "Vaelor III",
+      "thai": "เวเลอร์ที่สาม",
+      "affiliation": "ออเรแวน",
+      "kingdom": "aurevan",
+      "role": "กษัตริย์ในบันทึกประวัติศาสตร์",
+      "bio": "ชื่อกษัตริย์ในอดีตที่เกี่ยวข้องกับออเรแวน ปรากฏในเรื่องเล่าและความทรงจำทางประวัติศาสตร์ของโลก",
+      "status": "working",
+      "portrait": "assets/portraits/vaelor-v2.webp",
+      "portraitAlt": "ภาพแนวคิดของเวเลอร์ที่สาม ยังไม่ยืนยันรูปลักษณ์ถาวร"
+    }
+  ],
+  "relations": [
+    {
+      "id": "maeron-caelan",
+      "source": "maeron",
+      "target": "caelan",
+      "label": "ผู้ดูแลและผู้ที่เติบโตในการดูแล",
+      "kind": "known",
+      "description": "เมรอนช่วยชีวิตและมีบทบาทเลี้ยงดูเคแลนตามภูมิหลังช่วงต้น"
+    },
+    {
+      "id": "roderic-luceran",
+      "source": "roderic",
+      "target": "luceran",
+      "label": "พระบิดาและพระโอรส",
+      "kind": "known",
+      "description": "ลูเซรันเป็นพระโอรสของรอเดอริกที่สี่"
+    },
+    {
+      "id": "halvaren-roderic",
+      "source": "halvaren",
+      "target": "roderic",
+      "label": "น้าชายและหลาน",
+      "kind": "known",
+      "description": "ฮัลวาเรนเป็นน้องชายพระมารดาของรอเดอริก ข้อมูลนี้ไม่ระบุความสัมพันธ์ต่อบุคคลอื่นเพิ่ม"
+    },
+    {
+      "id": "halvaren-elira",
+      "source": "halvaren",
+      "target": "elira",
+      "label": "ขบวนการและเครือข่ายข่าวสาร",
+      "kind": "role",
+      "description": "บทบาทช่วงต้นของหัวหน้าขบวนการกับผู้ทำงานสิ่งพิมพ์อยู่ในบริบทการจัดตั้งเดียวกัน ไม่ระบุเหตุการณ์ในอนาคต"
+    },
+    {
+      "id": "elira-thessa",
+      "source": "elira",
+      "target": "thessa",
+      "label": "ข่าวสารและภาระเสบียง",
+      "kind": "role",
+      "description": "บทบาทที่เสนอเชื่อมการเผยแพร่ข้อเรียกร้องกับผลที่ชุมชนรับ ไม่ยืนยันพันธมิตรตลอดเรื่อง"
+    },
+    {
+      "id": "seraya-nerys",
+      "source": "seraya",
+      "target": "nerys",
+      "label": "การทูตและการเงินเดินเรือ",
+      "kind": "role",
+      "description": "ความเชื่อมโยงเชิงบทบาทในเมอร์เธน แต่ละคนมีภาระและเป้าหมายของตน"
+    },
+    {
+      "id": "roderic-damar",
+      "source": "roderic",
+      "target": "damar",
+      "label": "ราชสำนักและกองทัพ",
+      "kind": "role",
+      "description": "เกี่ยวข้องกับสถาบันในเอลเดรเวน ไม่ระบุความภักดีหรือการเปลี่ยนฝ่าย"
+    },
+    {
+      "id": "luceran-damar",
+      "source": "luceran",
+      "target": "damar",
+      "label": "การเมืองราชสำนักและงานทหาร",
+      "kind": "role",
+      "description": "บทบาทเกี่ยวข้องกับเอลเดรเวน ไม่ยืนยันการร่วมมือเฉพาะเหตุการณ์"
+    },
+    {
+      "id": "damar-othrek",
+      "source": "damar",
+      "target": "othrek",
+      "label": "ความต้องการเสบียงและการผลิต",
+      "kind": "role",
+      "description": "งานกองทัพกับโรงช่างมีผลต่อกันในระดับทรัพยากร ไม่ยืนยันสัญญาหรือฝ่ายที่สนับสนุน"
+    },
+    {
+      "id": "ysol-seraya",
+      "source": "ysol",
+      "target": "seraya",
+      "label": "ผู้เจรจาต่างดินแดน",
+      "kind": "role",
+      "description": "ใช้เปรียบเทียบภาระของผู้เจรจาจากออเรแวนกับเมอร์เธน ไม่ยืนยันว่ามีข้อตกลงร่วมกันแล้ว"
+    },
+    {
+      "id": "ysol-vaelor",
+      "source": "ysol",
+      "target": "vaelor",
+      "label": "บริบทออเรแวนต่างยุค",
+      "kind": "role",
+      "description": "เชื่อมเพื่ออ่านบริบทดินแดน ไม่ใช่ความเป็นญาติหรือการพบกัน"
+    },
+    {
+      "id": "orven-irsen",
+      "source": "orven",
+      "target": "irsen",
+      "label": "ผู้ทำงานกับบันทึกคนละแหล่ง",
+      "kind": "role",
+      "description": "เชื่อมด้วยขอบเขตงานเอกสาร ไม่ยืนยันสังกัดร่วม ความเป็นญาติ หรือข้อมูลภูมิหลังที่ไม่ได้เปิดเผย"
+    },
+    {
+      "id": "evara-kesra",
+      "source": "evara",
+      "target": "kesra",
+      "label": "ผู้ประสานข้อเรียกร้องชุมชน",
+      "kind": "role",
+      "description": "บทบาทที่เสนอเกี่ยวข้องกับสิทธิท้องถิ่นของคนต่างพื้นที่"
+    },
+    {
+      "id": "kesra-rhuven",
+      "source": "kesra",
+      "target": "rhuven",
+      "label": "ขอบเขตอำนาจของผู้แทน",
+      "kind": "role",
+      "description": "เปรียบเทียบภาระการเป็นผู้แทนชุมชน ไม่ยืนยันว่าคนใดพูดแทนทุกกลุ่มได้"
+    },
+    {
+      "id": "saev-seraya",
+      "source": "saev",
+      "target": "seraya",
+      "label": "การเจรจาในบริบททะเล",
+      "kind": "role",
+      "description": "เชื่อมเรื่องผลของการค้าและการเดินเรือต่อคนหลายกลุ่ม โดยไม่เหมารวมชาวทะเลอยู่ใต้เมอร์เธน"
+    },
+    {
+      "id": "rhuven-evara",
+      "source": "rhuven",
+      "target": "evara",
+      "label": "สิทธิชุมชนและความรู้ท้องถิ่น",
+      "kind": "role",
+      "description": "เป็นความเชื่อมโยงเชิงบทบาท ไม่ระบุว่าทั้งสองอยู่ในรัฐเดียวกัน"
+    },
+    {
+      "id": "halvaren-caelan",
+      "source": "halvaren",
+      "target": "caelan",
+      "label": "ขบวนการและสมาชิกที่ถูกชักชวน",
+      "kind": "role",
+      "description": "ฮัลวาเรนเป็นผู้นำขบวนการที่เคแลนถูกชักชวนเข้าร่วม แสดงเพียงความเกี่ยวข้องช่วงต้น"
+    },
+    {
+      "id": "elira-caelan",
+      "source": "elira",
+      "target": "caelan",
+      "label": "เครือข่ายสิ่งพิมพ์และงานช่วงต้น",
+      "kind": "role",
+      "description": "งานข่าวสารของเครือข่ายเชื่อมเคแลนกับผู้ร่วมงานฝ่ายต่อต้าน โดยไม่ระบุความสัมพันธ์หรือเหตุการณ์ภายหลัง"
+    }
+  ],
+  "heraldry": [
+    {
+      "id": "aurevan",
+      "name": "Aurevan",
+      "thai": "ออเรแวน",
+      "symbol": "มงกุฎเหล็กเหนือป้อมสามยอด",
+      "background": "#6a453d",
+      "foreground": "#d3bc7c",
+      "ruler": "ราชวงศ์เก่าแห่งออเรแวน",
+      "family": "ชื่อราชสกุลยังไม่กำหนด",
+      "caption": "ร่างตราตระกูลผู้ปกครอง",
+      "kind": "house",
+      "meaning": "อำนาจราชสำนัก ความมั่นคง และสถาบันทหาร",
+      "status": "proposed",
+      "crest": "assets/crests/aurevan.svg",
+      "familyCrest": "assets/crests/aurevan-house.svg"
+    },
+    {
+      "id": "eldraven",
+      "name": "Eldraven",
+      "thai": "เอลเดรเวน",
+      "symbol": "สายน้ำบรรจบใต้ดาวเรขาคณิต",
+      "background": "#344b52",
+      "foreground": "#d0b678",
+      "ruler": "รอเดอริกที่สี่ในช่วงต้นเรื่อง",
+      "family": "ยังไม่ระบุชื่อราชสกุลในฉบับผู้อ่าน",
+      "caption": "ร่างตราราชสำนักปัจจุบัน",
+      "kind": "court",
+      "meaning": "ลุ่มน้ำ การประสานผลประโยชน์ และศูนย์คำสั่ง",
+      "status": "proposed",
+      "crest": "assets/crests/eldraven.svg",
+      "familyCrest": "assets/crests/eldraven-court.svg"
+    },
+    {
+      "id": "varessia",
+      "name": "Varessia",
+      "thai": "วาเรสเซีย",
+      "symbol": "หนังสือเปิดเหนือรวงข้าว",
+      "background": "#694b56",
+      "foreground": "#d8c798",
+      "ruler": "สถานะการปกครองต้องอ่านตามช่วงเรื่อง",
+      "family": "ยังไม่กำหนดตระกูลปกครองท้องถิ่น",
+      "caption": "ตราดินแดนที่เสนอ",
+      "kind": "territory",
+      "meaning": "สิ่งพิมพ์ การศึกษา และชีวิตของชุมชน",
+      "status": "proposed",
+      "crest": "assets/crests/varessia.svg",
+      "familyCrest": null
+    },
+    {
+      "id": "myrthen",
+      "name": "Myrthen",
+      "thai": "เมอร์เธน",
+      "symbol": "ใบเรือเหนือคลื่นสองชั้น",
+      "background": "#335b62",
+      "foreground": "#e2d0a4",
+      "ruler": "รูปแบบผู้ใช้อำนาจยังพัฒนา",
+      "family": "ยังไม่ยืนยันสถาบันหรือตระกูลปกครอง",
+      "caption": "ตราดินแดนที่เสนอ",
+      "kind": "territory",
+      "meaning": "การเดินเรือ การค้า และความพึ่งพากัน",
+      "status": "proposed",
+      "crest": "assets/crests/myrthen.svg",
+      "familyCrest": null
+    },
+    {
+      "id": "karveth",
+      "name": "Karveth",
+      "thai": "คาร์เวธ",
+      "symbol": "สันเขากับค้อนงานโลหะ",
+      "background": "#4c535c",
+      "foreground": "#d7c995",
+      "ruler": "รูปแบบผู้ใช้อำนาจยังพัฒนา",
+      "family": "ยังไม่กำหนดตระกูลปกครอง",
+      "caption": "ตราดินแดนที่เสนอ",
+      "kind": "territory",
+      "meaning": "แหล่งแร่ ช่างฝีมือ และทางผ่านภูเขา",
+      "status": "proposed",
+      "crest": "assets/crests/karveth.svg",
+      "familyCrest": null
+    },
+    {
+      "id": "sylvara",
+      "name": "Sylvara",
+      "thai": "ซิลวารา",
+      "symbol": "กิ่งใบล้อมสายน้ำ",
+      "background": "#3e5a45",
+      "foreground": "#d8cf9a",
+      "ruler": "รูปแบบผู้ใช้อำนาจยังพัฒนา",
+      "family": "ยังไม่กำหนดตระกูลปกครอง",
+      "caption": "ตราดินแดนที่เสนอ",
+      "kind": "territory",
+      "meaning": "ความรู้ท้องถิ่น ป่า และสิทธิชุมชน",
+      "status": "proposed",
+      "crest": "assets/crests/sylvara.svg",
+      "familyCrest": null
+    },
+    {
+      "id": "drakoria",
+      "name": "Drakoria",
+      "thai": "ดราโคเรีย",
+      "symbol": "สะพานเหนือทางสามสาย",
+      "background": "#65583d",
+      "foreground": "#d9c78e",
+      "ruler": "ศูนย์อำนาจท้องถิ่นยังออกแบบ",
+      "family": "ยังไม่กำหนดตระกูลที่ปกครองทั้งดินแดน",
+      "caption": "ตราดินแดนที่เสนอ",
+      "kind": "territory",
+      "meaning": "ทางผ่าน การอยู่ร่วม และการต่อรองหลายฝ่าย",
+      "status": "proposed",
+      "crest": "assets/crests/drakoria.svg",
+      "familyCrest": null
+    },
+    {
+      "id": "closed-kingdom",
+      "name": "Nhalyra",
+      "thai": "นาลีรา",
+      "symbol": "วงหมอกเหนือรูปเกาะ",
+      "background": "#52495d",
+      "foreground": "#cbbccc",
+      "ruler": "ข้อมูลผู้ปกครองไม่เปิดเผย",
+      "family": "ไม่มีข้อมูลตราตระกูลที่เกาะใช้จริง",
+      "caption": "เครื่องหมายอ้างอิงที่ผู้จัดทำเสนอ",
+      "kind": "reference",
+      "meaning": "ใช้ระบุดินแดนปิด โดยไม่อ้างความรู้ภายใน",
+      "status": "proposed",
+      "crest": "assets/crests/closed-kingdom.svg",
+      "familyCrest": null
+    },
+    {
+      "id": "kingless-kingdom",
+      "name": "Orranth",
+      "thai": "ออร์แรนธ์",
+      "symbol": "ซุ้มเปิดเหนือทางแยก",
+      "background": "#72543d",
+      "foreground": "#e0c693",
+      "ruler": "ไร้กษัตริย์ ผู้ใช้อำนาจยังไม่ระบุ",
+      "family": "ผู้ใช้อำนาจและตระกูลที่เกี่ยวข้องยังไม่ระบุ",
+      "caption": "ตราดินแดนที่เสนอ",
+      "kind": "territory",
+      "meaning": "ทางเลือก การเชื่อมต่อ และพื้นที่เจรจา",
+      "status": "proposed",
+      "crest": "assets/crests/kingless-kingdom.svg",
+      "familyCrest": null
+    }
+  ],
+  "acts": [
+    {
+      "id": "prologue",
+      "title": "บทนำ",
+      "subtitle": "ร่องรอยก่อนเรื่องเล่า",
+      "description": "ทำความรู้จักแผ่นดินและสิ่งที่ผู้คนเลือกจดจำ",
+      "chapters": [
+        {
+          "number": 1,
+          "title": "ฝั่งแรก"
+        },
+        {
+          "number": 2,
+          "title": "เรื่องที่ถูกเล่าต่อ"
+        }
+      ]
+    },
+    {
+      "id": "act-1",
+      "title": "องค์ที่หนึ่ง",
+      "subtitle": "ผู้คนและคำมั่น",
+      "description": "ชีวิตประจำวัน ข่าวสาร และผู้คนที่เริ่มเลือกทางร่วมกัน",
+      "chapters": [
+        {
+          "number": 3,
+          "title": "เด็กที่ไร้นาม"
+        },
+        {
+          "number": 4,
+          "title": "แผ่นดินใต้การยึดครอง"
+        },
+        {
+          "number": 5,
+          "title": "นักพิมพ์"
+        },
+        {
+          "number": 6,
+          "title": "ผู้แทนเจรจา"
+        },
+        {
+          "number": 7,
+          "title": "ถนนที่เริ่มเคลื่อนไหว"
+        },
+        {
+          "number": 8,
+          "title": "คำรับรองบนกระดาษ"
+        },
+        {
+          "number": 9,
+          "title": "ธง"
+        },
+        {
+          "number": 10,
+          "title": "ประตูเมือง"
+        },
+        {
+          "number": 11,
+          "title": "คำมั่นต่อผู้คน"
+        }
+      ]
+    },
+    {
+      "id": "act-2",
+      "title": "องค์ที่สอง",
+      "subtitle": "หน้าที่และความขัดแย้ง",
+      "description": "ติดตามน้ำหนักของคำสั่ง ความไว้วางใจ และสิ่งที่ต้องรับผิดชอบ",
+      "chapters": [
+        {
+          "number": 12,
+          "title": "คำสั่งและหน้าที่"
+        },
+        {
+          "number": 13,
+          "title": "ก่อนเสียงปืนใหญ่"
+        },
+        {
+          "number": 14,
+          "title": "น้ำหนักของการตัดสินใจ"
+        },
+        {
+          "number": 15,
+          "title": "โต๊ะเจรจา"
+        },
+        {
+          "number": 16,
+          "title": "ข้อกล่าวหา"
+        },
+        {
+          "number": 17,
+          "title": "เมืองที่เวลาน้อยลง"
+        },
+        {
+          "number": 18,
+          "title": "คำถามจากวันเก่า"
+        },
+        {
+          "number": 19,
+          "title": "ชื่อที่คนอื่นเรียก"
+        },
+        {
+          "number": 20,
+          "title": "คำขอที่ยังรอ"
+        },
+        {
+          "number": 21,
+          "title": "ข่าวในคืนนั้น"
+        },
+        {
+          "number": 22,
+          "title": "ภาระของวันใหม่"
+        }
+      ]
+    },
+    {
+      "id": "act-3",
+      "title": "องค์ที่สาม",
+      "subtitle": "ดินแดนและข้อตกลง",
+      "description": "สำรวจผู้คนต่างดินแดนกับเงื่อนไขที่ทำให้การอยู่ร่วมกันเป็นไปได้",
+      "chapters": [
+        {
+          "number": 23,
+          "title": "เก้าอาณาจักร"
+        },
+        {
+          "number": 24,
+          "title": "เรื่องเล่าเก่า"
+        },
+        {
+          "number": 25,
+          "title": "บันทึกที่ตกหล่น"
+        },
+        {
+          "number": 26,
+          "title": "อีกฟากของภูเขา"
+        },
+        {
+          "number": 27,
+          "title": "ทางผ่านของทะเล"
+        },
+        {
+          "number": 28,
+          "title": "ขอบเขตของความรู้"
+        },
+        {
+          "number": 29,
+          "title": "ชื่อที่ประวัติศาสตร์เลือกจำ"
+        },
+        {
+          "number": 30,
+          "title": "เส้นทางที่มาบรรจบ"
+        },
+        {
+          "number": 31,
+          "title": "วันที่เงียบลง"
+        },
+        {
+          "number": 32,
+          "title": "สิ่งที่ต้องรับไว้"
+        },
+        {
+          "number": 33,
+          "title": "ความหวังของผู้คน"
+        }
+      ]
+    },
+    {
+      "id": "act-4",
+      "title": "องค์ที่สี่",
+      "subtitle": "มรดกของอำนาจ",
+      "description": "คำมั่นเดิมและสายตาของคนต่างรุ่นต่อโลกที่ตนอาศัย",
+      "chapters": [
+        {
+          "number": 34,
+          "title": "ระเบียบที่แผ่ไกล"
+        },
+        {
+          "number": 35,
+          "title": "เสียงที่ไปไม่ถึง"
+        },
+        {
+          "number": 36,
+          "title": "คำมั่นที่ต้องเลือก"
+        },
+        {
+          "number": 37,
+          "title": "สายตาของคนรุ่นใหม่"
+        },
+        {
+          "number": 38,
+          "title": "คนที่เลือกยืนร่วมกัน"
+        },
+        {
+          "number": 39,
+          "title": "คำถามที่ต้องตอบ"
+        },
+        {
+          "number": 40,
+          "title": "สิ่งที่เหลืออยู่"
+        }
+      ]
+    },
+    {
+      "id": "epilogue",
+      "title": "บทส่งท้าย",
+      "subtitle": "เรื่องเล่าที่ส่งต่อ",
+      "description": "สิ่งที่ผู้คนเลือกเก็บไว้ในความทรงจำ",
+      "chapters": [
+        {
+          "number": 41,
+          "title": "เรื่องที่เราจะจดจำ"
+        }
+      ]
+    }
+  ]
+}

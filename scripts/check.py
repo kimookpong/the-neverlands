@@ -104,6 +104,31 @@ def main():
     } for f in OUT.rglob('*')), 'Unexpected file in the website export'
     articles = json.loads((OUT/'search-index.json').read_text())
     assert len(articles) == len(content['articles'])
+    reader=json.loads((ROOT/'content/reader-guide.json').read_text())
+    assert reader['visibility']=='public' and reader['scope']=='opening-only'
+    cast={p['id']:p for p in reader['characters']}
+    assert len(cast)==len(reader['characters'])==19
+    artwork=json.loads((ROOT/'content/artwork.json').read_text())
+    assert {a['character'] for a in artwork['portraits']}==set(cast)
+    for person in cast.values():
+        assert (OUT/person['portrait']).exists() and reading(person['name'])
+        assert person['status'] in {'working','proposed'}
+        assert next(a for a in content['articles'] if a['slug']==person['id'])['category']=='characters'
+    known_pairs={frozenset((r['source'],r['target'])) for r in reader['relations'] if r['kind']=='known'}
+    assert known_pairs=={frozenset(('caelan','maeron')),frozenset(('roderic','luceran')),frozenset(('halvaren','roderic'))}, 'Published family/guardian ties require explicit review'
+    for relation in reader['relations']:
+        assert relation['source'] in cast and relation['target'] in cast
+        assert relation['kind'] in {'known','role'}
+    public_chapters=[c for a in reader['acts'] for c in a['chapters']]
+    assert [c['number'] for c in public_chapters]==list(range(1,42))
+    assert len(reader['acts'])==6
+    assert all(set(c)=={'number','title'} for c in public_chapters), 'Author-only chapter metadata must never be serialized'
+    assert len(reader['heraldry'])==9
+    for realm in reader['heraldry']:
+        assert realm['status']=='proposed' and (OUT/realm['crest']).exists()
+        if realm['familyCrest']: assert (OUT/realm['familyCrest']).exists()
+        if realm['id'] in {'closed-kingdom','kingless-kingdom'}:assert realm['familyCrest'] is None
+    assert next(r for r in reader['heraldry'] if r['id']=='closed-kingdom')['kind']=='reference'
     atlas=json.loads((ROOT/'content/atlas.json').read_text())
     assert atlas['visibility']=='public' and atlas['status']=='proposed'
     kingdoms={k['id']:k for k in atlas['kingdoms']}
@@ -174,6 +199,7 @@ def main():
     print(f'PASS: {len(pages)} pages, {count} internal links, metadata, fragments, and public-content boundary')
     print('PASS: 9 proposed regions, 40 landmarks, a schematic closed island, no gaps or overlaps, and land routes')
     print('PASS: visible English coverage, bilingual SVG labels, search readings, and unchanged map identifiers')
+    print('PASS: 19 portraits, reviewed opening-only relationships, 9 provisional realm symbols and 41 safe chapter labels')
 
 
 if __name__ == '__main__':

@@ -8,12 +8,14 @@ from pathlib import Path
 import re
 import shutil
 from atlas import atlas_block, render_svg
+from reader import character_catalog, profile_block, realm_block, heraldry_catalog, story_block, crest_svg
 from pronunciation import annotate_data, annotate_html
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist'
 DATA = json.loads((ROOT / 'content/wiki.json').read_text())
 ATLAS = json.loads((ROOT / 'content/atlas.json').read_text())
+READER = json.loads((ROOT / 'content/reader-guide.json').read_text())
 ARTICLES = {a['slug']: a for a in DATA['articles']}
 CATEGORIES = {c['id']: c for c in DATA['categories']}
 STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': 'ชื่อชั่วคราว',
@@ -22,7 +24,7 @@ STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': '
           'legend': 'ตำนาน · ความจริงยังไม่ยืนยัน'}
 ICONS = {
  'world': '◎', 'history': '⌛', 'kingdoms': '♜', 'characters': '♙',
- 'peoples': '❋', 'magic': '✧', 'technology': '⚒', 'timeline': '◷', 'atlas': '⌖',
+ 'peoples': '❋', 'magic': '✧', 'technology': '⚒', 'timeline': '◷', 'atlas': '⌖', 'story': '☷',
 }
 parser = argparse.ArgumentParser(description=__doc__)
 parser.add_argument('--base-path', default=os.environ.get('BASE_PATH', '/the-neverlands/'))
@@ -47,8 +49,10 @@ def badge(article):
 def card(article, index=None):
     category = CATEGORIES[article['category']]
     num = f'<span class="card-number">{index:02d}</span>' if index else ''
+    realm = next((r for r in READER['heraldry'] if r['id']==article['slug']),None)
+    emblem = f'<img class="card-crest" src="{url(realm["crest"])}" alt="ตราที่เสนอของ {e(realm["name"])}" width="60" height="72" loading="lazy">' if realm else ''
     return f'''<a class="article-card" href="{article_url(article['slug'])}">
-      <div class="card-top"><span class="eyebrow">{e(category['english'])}</span>{num}</div>
+      <div class="card-top"><span class="eyebrow">{e(category['english'])}</span>{num}{emblem}</div>
       <h3>{e(article['title'])}</h3><p>{e(article['description'])}</p>
       <div class="card-bottom">{badge(article)}<span class="card-arrow" aria-hidden="true">↗</span></div>
     </a>'''
@@ -77,6 +81,7 @@ def shell(title, description, body, path='', category='', page_type='website', c
   <link rel="canonical" href="{canonical}"><link rel="icon" type="image/svg+xml" href="{url('assets/favicon.svg')}">
   <link rel="stylesheet" href="{url('assets/styles.css')}">
   <link rel="stylesheet" href="{url('assets/atlas.css')}">
+  <link rel="stylesheet" href="{url('assets/reader.css')}">
   <script defer src="{url('assets/app.js')}"></script>
 </head>
 <body data-base="{BASE}">
@@ -87,7 +92,7 @@ def shell(title, description, body, path='', category='', page_type='website', c
 <aside class="sidebar" id="sidebar" aria-label="สารบัญ Wiki">
   <a class="brand" href="{url()}"><span class="brand-seal" aria-hidden="true">N</span>
     <span class="brand-title">THE NEVERLANDS<span class="brand-caption">บันทึกโลกและเรื่องเล่า</span></span></a>
-  <div class="sidebar-rule"><span>สารานุกรมสำหรับผู้อ่าน</span><span>ฉบับ 01</span></div>
+<div class="sidebar-rule"><span>สารานุกรมสำหรับผู้อ่าน</span><span>ฉบับพัฒนา</span></div>
   <nav aria-label="หมวดบทความ">
     <a class="nav-link {'active' if not path else ''}" href="{url()}" {'aria-current="page"' if not path else ''}><span class="nav-icon" aria-hidden="true">⌂</span><span>หน้าหลัก</span></a>
     <p class="nav-label">สำรวจจักรวาล</p>{nav}
@@ -107,6 +112,12 @@ def shell(title, description, body, path='', category='', page_type='website', c
 
 
 def home():
+    reader_links = '<section class="reader-shortcuts" aria-label="สำรวจข้อมูลสำหรับผู้อ่าน">' + ''.join(
+        f'<a href="{url(path)}"><span>{count}</span><h2>{title}</h2><p>{description}</p><b aria-hidden="true">↗</b></a>'
+        for path,count,title,description in [
+            ('categories/characters/','19 ภาพแนวคิด','ตัวละครและความเชื่อมโยง','บทบาท สังกัด และความสัมพันธ์ที่เปิดเผยได้'),
+            ('wiki/heraldry/','9 ดินแดน','ตราและผู้ครองอำนาจ','เครื่องหมายกับสถานะตระกูลผู้ปกครอง'),
+            ('wiki/story-outline/','4 องค์ · 41 บท','ลำดับองค์และบท','ชื่อฉบับสำหรับผู้อ่านที่เก็บจุดหักมุมไว้')]) + '</section>'
     category_cards = ''.join(f'''<a class="category-card" href="{url('categories/'+c['id']+'/')}">
         <span class="category-symbol" aria-hidden="true">{ICONS[c['id']]}</span>
         <div><span class="eyebrow">{e(c['english'])}</span><h3>{e(c['title'])}</h3><p>{e(c['description'])}</p></div>
@@ -124,6 +135,7 @@ def home():
         <div class="hero-bottom"><span>บันทึกโลกและเรื่องเล่า</span><span>การเมือง · ประวัติศาสตร์ · แฟนตาซี</span><span>บันทึกโลกฉบับ 0.1</span></div>
       </section>
       <div class="intro-strip"><div><span class="small-star" aria-hidden="true">✧</span><p>คู่มือสำหรับผู้อ่าน <span>รู้จักโลก โดยไม่เปิดเผยความลับของเรื่อง</span></p></div><a href="{article_url('about')}">เกี่ยวกับ Wiki <span aria-hidden="true">→</span></a></div>
+      {reader_links}
       <section class="section" aria-labelledby="start-heading"><div class="section-heading"><div><p class="eyebrow">ก้าวแรกสู่จักรวาลนี้</p><h2 id="start-heading">เริ่มต้นที่นี่</h2></div><span class="section-note">สามบทความเพื่อรู้จักจักรวาลนี้</span></div>
       <div class="featured-grid">{''.join(card(ARTICLES[s],i) for i,s in enumerate(['world','seven-kingdoms','caelan'],1))}</div></section>
       <section class="section" aria-labelledby="explore-heading"><div class="section-heading"><div><p class="eyebrow">สำรวจคลังบันทึก</p><h2 id="explore-heading">เปิดบันทึกของโลก</h2></div><span class="section-note">{len(ARTICLES)} บทความ · {len(CATEGORIES)} หมวดหมู่</span></div><div class="category-grid">{category_cards}</div></section>
@@ -141,12 +153,16 @@ def article_page(a):
     facts = ''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k,v in a['facts'])
     related = ''.join(card(ARTICLES[s]) for s in a['related'])
     atlas = atlas_block(ATLAS,BASE) if a['slug'] == 'atlas' else ''
+    reader = profile_block(a['slug'],READER,BASE) if a['category']=='characters' else realm_block(a['slug'],READER,BASE)
+    if a['slug']=='heraldry': reader=heraldry_catalog(READER,BASE)
+    if a['slug']=='story-outline': reader=story_block(READER)
     has_map = next((k['mapped'] for k in ATLAS['kingdoms'] if k['id']==a['slug']),False)
     map_label = 'ดูตำแหน่งและสถานที่สำคัญบนแผนที่ข้อเสนอ' if has_map else 'ดูสถานะข้อมูลในคลังแผนที่'
     map_link = f'<a class="kingdom-map-link" href="{article_url("atlas")}?region={a["slug"]}">{map_label} ↗</a>' if a['category'] == 'kingdoms' else ''
     body = f'''<article class="article-page {'atlas-article' if atlas else ''}"><div class="article-breadcrumb"><a href="{url()}">Wiki</a><span>/</span><a href="{url('categories/'+c['id']+'/')}">{e(c['title'])}</a></div>
       <header class="article-header"><p class="eyebrow">{e(a['subtitle'])}</p><h1>{e(a['title'])}</h1><p class="article-lead">{e(a['description'])}</p><div class="article-meta">{badge(a)}<span>ข้อมูลสำหรับผู้อ่าน</span><span>Wiki รุ่น {e(DATA['version'])}</span></div>{map_link}</header>
       {atlas}
+      {reader}
       <div class="article-layout"><div class="prose">{sections}</div><aside class="article-aside"><div class="toc"><p class="eyebrow">ในหน้านี้</p><h2>ในบทความนี้</h2>{toc}</div>{'<dl class="fact-box">'+facts+'</dl>' if facts else ''}<div class="reader-note"><span aria-hidden="true">✧</span><p>แสดงเฉพาะข้อมูลที่เปิดเผยได้<br>ไม่รวมความลับและตอนจบ</p></div></aside></div>
       <section class="related-section"><div class="section-heading"><div><p class="eyebrow">สำรวจต่อ</p><h2>บันทึกที่เกี่ยวข้อง</h2></div></div><div class="related-grid">{related}</div></section>
     </article>'''
@@ -154,6 +170,11 @@ def article_page(a):
 
 
 def category_page(c):
+    if c['id']=='characters':
+        return shell('ตัวละครสำคัญ','ภาพแนวคิด บทบาท และความเชื่อมโยงตัวละครที่เปิดเผยได้',character_catalog(READER,BASE),'categories/characters/','characters',crumbs='ตัวละคร')
+    if c['id']=='story':
+        body='<div class="listing-page"><header class="listing-header"><p class="eyebrow">คู่มือการอ่าน</p><h1>องค์และบท</h1><p>ลำดับบทนำ สี่องค์ และบทส่งท้ายฉบับสำหรับผู้อ่าน</p></header>'+story_block(READER)+'</div>'
+        return shell('องค์และบท',c['description'],body,'categories/story/','story',crumbs='องค์และบท')
     articles = [a for a in ARTICLES.values() if a['category'] == c['id']]
     body = f'''<div class="listing-page"><header class="listing-header"><p class="eyebrow">{e(c['english'])}</p><h1>{e(c['title'])}</h1><p>{e(c['description'])}</p><span class="listing-count">{len(articles):02d} บทความในหมวดนี้</span></header><div class="listing-grid">{''.join(card(a) for a in articles)}</div></div>'''
     return shell(c['title'],c['description'],body,f'categories/{c["id"]}/',c['id'],crumbs=c['title'])
@@ -175,6 +196,8 @@ def write(path, content):
 
 
 def validate():
+    if READER['visibility']!='public' or READER['scope']!='opening-only':
+        raise ValueError('Reader guide must be explicitly public and opening-only')
     if ATLAS['visibility'] != 'public' or ATLAS['status'] != 'proposed':
         raise ValueError('Atlas must be explicitly public and proposed')
     if len(ARTICLES) != len(DATA['articles']):
@@ -197,6 +220,9 @@ def main():
         shutil.rmtree(OUT)
     OUT.mkdir()
     shutil.copytree(ROOT/'site/assets',OUT/'assets')
+    for realm in READER['heraldry']:
+        write(realm['crest'],crest_svg(realm))
+        if realm['familyCrest']: write(realm['familyCrest'],crest_svg(realm,family=True))
     write('assets/neverlands-atlas.svg',render_svg(ATLAS,interactive=False))
     write('index.html',home())
     for a in ARTICLES.values():
