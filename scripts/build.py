@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the public reader wiki. Reads only content/wiki.json and site/."""
+"""Build the reader wiki from explicitly public content/ data and site/ assets."""
 import argparse
 import html
 import json
@@ -7,15 +7,17 @@ import os
 from pathlib import Path
 import re
 import shutil
-from urllib.parse import quote
+from atlas import atlas_block, render_svg
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist'
 DATA = json.loads((ROOT / 'content/wiki.json').read_text())
+ATLAS = json.loads((ROOT / 'content/atlas.json').read_text())
 ARTICLES = {a['slug']: a for a in DATA['articles']}
 CATEGORIES = {c['id']: c for c in DATA['categories']}
 STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': 'ชื่อชั่วคราว',
-          'developing': 'อยู่ระหว่างออกแบบ', 'in-world': 'เรื่องเล่าทางการ'}
+          'developing': 'อยู่ระหว่างออกแบบ', 'in-world': 'เรื่องเล่าทางการ',
+          'proposed': 'ข้อเสนอ · ยังไม่ล็อก Canon'}
 ICONS = {
  'world': '◎', 'history': '⌛', 'kingdoms': '♜', 'characters': '♙',
  'peoples': '❋', 'magic': '✧', 'technology': '⚒', 'timeline': '◷', 'atlas': '⌖',
@@ -72,6 +74,7 @@ def shell(title, description, body, path='', category='', page_type='website', c
   <meta name="twitter:card" content="summary_large_image">
   <link rel="canonical" href="{canonical}"><link rel="icon" type="image/svg+xml" href="{url('assets/favicon.svg')}">
   <link rel="stylesheet" href="{url('assets/styles.css')}">
+  <link rel="stylesheet" href="{url('assets/atlas.css')}">
   <script defer src="{url('assets/app.js')}"></script>
 </head>
 <body data-base="{BASE}">
@@ -123,7 +126,7 @@ def home():
       <div class="featured-grid">{''.join(card(ARTICLES[s],i) for i,s in enumerate(['world','seven-kingdoms','caelan'],1))}</div></section>
       <section class="section" aria-labelledby="explore-heading"><div class="section-heading"><div><p class="eyebrow">EXPLORE THE ARCHIVE</p><h2 id="explore-heading">เปิดบันทึกของโลก</h2></div><span class="section-note">{len(ARTICLES)} บทความ · {len(CATEGORIES)} หมวดหมู่</span></div><div class="category-grid">{category_cards}</div></section>
       <section class="kingdom-section" aria-labelledby="kingdom-heading"><div class="kingdom-intro"><p class="eyebrow">SEVEN REALMS, ONE CONTINENT</p><h2 id="kingdom-heading">เจ็ดอาณาจักร<br><em>เจ็ดฐานอำนาจ</em></h2><p>จากราชวงศ์เก่าแก่ถึงเมืองท่า<br>จากโรงช่างบนภูเขาถึงผืนป่า<br>แต่ละดินแดนมีบทบาทของตนเอง</p><span class="inline-note">ชื่อทั้งหมดเป็นชื่อชั่วคราว</span><a class="text-link" href="{article_url('seven-kingdoms')}">อ่านภาพรวม <span aria-hidden="true">→</span></a></div><div class="kingdom-list">{kingdoms}</div></section>
-      <aside class="editorial-note"><span aria-hidden="true">✦</span><div><h2>โลกนี้ยังอยู่ระหว่างการเขียน</h2><p>ชื่อ ตัวละคร และรายละเอียดบางส่วนอาจเปลี่ยนแปลง แต่ละบทความระบุสถานะข้อมูลไว้ แผนที่และพรมแดนจะเพิ่มเติมเมื่อพร้อมให้อ้างอิง</p></div><a href="{article_url('atlas')}">สถานะแผนที่ <span aria-hidden="true">↗</span></a></aside>
+      <aside class="editorial-note"><span aria-hidden="true">✦</span><div><h2>โลกนี้ยังอยู่ระหว่างการเขียน</h2><p>ชื่อ ตัวละคร และรายละเอียดบางส่วนอาจเปลี่ยนแปลง แผนที่ข้อเสนอรุ่น 0.1 มีสถานที่สำคัญ 35 แห่งให้สำรวจ โดยยังไม่ล็อกชื่อหรือพรมแดน</p></div><a href="{article_url('atlas')}">สำรวจแผนที่ <span aria-hidden="true">↗</span></a></aside>
     </div>'''
     return shell('The Neverlands', 'Wiki ภาษาไทยสำหรับผู้อ่าน The Neverlands สำรวจโลก เจ็ดอาณาจักร ตัวละคร และเวทมนตร์ โดยไม่เปิดเผยความลับหรือตอนจบ', body)
 
@@ -135,8 +138,11 @@ def article_page(a):
     toc = ''.join(f'<a href="#section-{i}">{e(s["heading"])}</a>' for i,s in enumerate(a['sections'],1))
     facts = ''.join(f'<div><dt>{e(k)}</dt><dd>{e(v)}</dd></div>' for k,v in a['facts'])
     related = ''.join(card(ARTICLES[s]) for s in a['related'])
-    body = f'''<article class="article-page"><div class="article-breadcrumb"><a href="{url()}">Wiki</a><span>/</span><a href="{url('categories/'+c['id']+'/')}">{e(c['title'])}</a></div>
-      <header class="article-header"><p class="eyebrow">{e(a['subtitle'])}</p><h1>{e(a['title'])}</h1><p class="article-lead">{e(a['description'])}</p><div class="article-meta">{badge(a)}<span>ข้อมูลสำหรับผู้อ่าน</span><span>Wiki v{e(DATA['version'])}</span></div></header>
+    atlas = atlas_block(ATLAS,BASE) if a['slug'] == 'atlas' else ''
+    map_link = f'<a class="kingdom-map-link" href="{article_url("atlas")}?region={a["slug"]}">ดูตำแหน่งและสถานที่สำคัญบนแผนที่ข้อเสนอ ↗</a>' if a['category'] == 'kingdoms' else ''
+    body = f'''<article class="article-page {'atlas-article' if atlas else ''}"><div class="article-breadcrumb"><a href="{url()}">Wiki</a><span>/</span><a href="{url('categories/'+c['id']+'/')}">{e(c['title'])}</a></div>
+      <header class="article-header"><p class="eyebrow">{e(a['subtitle'])}</p><h1>{e(a['title'])}</h1><p class="article-lead">{e(a['description'])}</p><div class="article-meta">{badge(a)}<span>ข้อมูลสำหรับผู้อ่าน</span><span>Wiki v{e(DATA['version'])}</span></div>{map_link}</header>
+      {atlas}
       <div class="article-layout"><div class="prose">{sections}</div><aside class="article-aside"><div class="toc"><p class="eyebrow">ON THIS PAGE</p><h2>ในบทความนี้</h2>{toc}</div>{'<dl class="fact-box">'+facts+'</dl>' if facts else ''}<div class="reader-note"><span aria-hidden="true">✧</span><p>แสดงเฉพาะข้อมูลที่เปิดเผยได้<br>ไม่รวมความลับและตอนจบ</p></div></aside></div>
       <section class="related-section"><div class="section-heading"><div><p class="eyebrow">CONTINUE EXPLORING</p><h2>บันทึกที่เกี่ยวข้อง</h2></div></div><div class="related-grid">{related}</div></section>
     </article>'''
@@ -165,6 +171,8 @@ def write(path, content):
 
 
 def validate():
+    if ATLAS['visibility'] != 'public' or ATLAS['status'] != 'proposed':
+        raise ValueError('Atlas must be explicitly public and proposed')
     if len(ARTICLES) != len(DATA['articles']):
         raise ValueError('Duplicate article slugs')
     for a in ARTICLES.values():
@@ -185,6 +193,7 @@ def main():
         shutil.rmtree(OUT)
     OUT.mkdir()
     shutil.copytree(ROOT/'site/assets',OUT/'assets')
+    write('assets/neverlands-atlas.svg',render_svg(ATLAS,interactive=False))
     write('index.html',home())
     for a in ARTICLES.values():
         write(f'wiki/{a["slug"]}/index.html',article_page(a))
@@ -195,7 +204,8 @@ def main():
     index = [dict(slug=a['slug'],title=a['title'],subtitle=a['subtitle'],description=a['description'],
         category=a['category'],categoryTitle=CATEGORIES[a['category']]['title'],
         statusLabel=STATUS[a['status']],status=a['status'],url=article_url(a['slug']),
-        text=' '.join(p for s in a['sections'] for p in s['paragraphs'])) for a in ARTICLES.values()]
+        text=' '.join(p for s in a['sections'] for p in s['paragraphs']) +
+        (' ' + ' '.join(p['name']+' '+p['thai']+' '+p['role']+' '+p['strategic'] for p in ATLAS['places']) if a['slug']=='atlas' else '')) for a in ARTICLES.values()]
     write('search-index.json',json.dumps(index,ensure_ascii=False))
     paths = ['']+[f'wiki/{a}/' for a in ARTICLES]+[f'categories/{c}/' for c in CATEGORIES]
     write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{ORIGIN}{url(p)}</loc></url>' for p in paths)+'</urlset>')
