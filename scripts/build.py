@@ -21,6 +21,7 @@ EVENTS = json.loads((ROOT / 'content/events.json').read_text())
 ARTICLES = {a['slug']: a for a in DATA['articles']}
 CATEGORIES = {c['id']: c for c in DATA['categories']}
 STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': 'ชื่อชั่วคราว',
+          'accepted': 'ผู้เขียนรับรองแล้ว',
           'developing': 'อยู่ระหว่างออกแบบ', 'in-world': 'เรื่องเล่าทางการ',
           'proposed': 'ข้อเสนอ · ยังไม่ล็อก Canon',
           'legend': 'ตำนาน · ความจริงยังไม่ยืนยัน'}

@@ -131,6 +131,7 @@ def main():
     assert next(r for r in reader['heraldry'] if r['id']=='closed-kingdom')['kind']=='reference'
     events=json.loads((ROOT/'content/events.json').read_text())
     assert events['visibility']=='public' and events['scope']=='background-only'
+    assert events['status']=='accepted' and events['approvedAt']=='2026-11-05'
     public_articles={a['slug']:a for a in content['articles']}
     event_slugs={x['slug'] for x in events['events']}
     assert len(event_slugs)==len(events['events'])==8
@@ -138,7 +139,7 @@ def main():
     for event in events['events']:
         assert set(event)=={'slug','title','kind','period','regions','people','topics','place','summary','knowledge','pressure'}, 'Unexpected event metadata requires public review'
         a=public_articles[event['slug']]
-        assert a['category']=='events' and a['status']=='proposed'
+        assert a['category']=='events' and a['status']=='accepted'
         assert a['title']==event['title'] and a['description']==event['summary']
         assert event['regions'] and event['topics'] and event['people']
         assert all(public_articles[s]['category']=='kingdoms' for s in event['regions'])
@@ -222,7 +223,7 @@ def main():
     print('PASS: 9 proposed regions, 40 landmarks, a schematic closed island, no gaps or overlaps, and land routes')
     print('PASS: visible English coverage, bilingual SVG labels, search readings, and unchanged map identifiers')
     print('PASS: 19 portraits, reviewed opening-only relationships, 9 provisional realm symbols and 41 safe chapter labels')
-    print('PASS: 8 proposed background events, public-only metadata, reciprocal connections and existing map locations')
+    print('PASS: 8 approved background events, public-only metadata, reciprocal connections and existing map locations')
 
 
 if __name__ == '__main__':
