@@ -57,25 +57,26 @@
     selectedRegion = region ? region.id : '';
     selectedPlace = place && place.kingdom === selectedRegion ? place.id : '';
     picker.value = selectedRegion;
-    document.getElementById('atlas-inspector-kicker').textContent = region ? region.mapped ? `ภูมิภาคข้อเสนอ · ${regionPlaces.length} สถานที่` : 'ยืนยันลักษณะแล้ว · ยังไม่ระบุที่ตั้ง' : catalogSummary;
+    const schematic = region && region.mapConfidence === 'schematic';
+    document.getElementById('atlas-inspector-kicker').textContent = region ? schematic ? 'เกาะปิด · ตำแหน่งและรูปร่างเสนอ' : `ภูมิภาคข้อเสนอ · ${regionPlaces.length} สถานที่` : catalogSummary;
     title.textContent = region ? region.title : 'โลกที่ต้องพึ่งพากัน';
-    description.textContent = region ? region.summary || region.terrain : 'เลือกพื้นที่หรือชื่ออาณาจักรเพื่ออ่านรายละเอียด อาณาจักรปิดและอาณาจักรไร้กษัตริย์ยังไม่มีพิกัดบนแผนที่';
-    unmappedAlert.hidden = !region || region.mapped;
-    unmappedAlert.textContent = region && !region.mapped ? `${region.title} ยังไม่ระบุที่ตั้ง จึงแสดงผัง ${mappedCount} ภูมิภาคเดิมโดยไม่ปักหมุดใหม่` : '';
+    description.textContent = region ? region.summary || region.terrain : 'เลือกพื้นที่หรือชื่ออาณาจักรเพื่ออ่านรายละเอียด ทั้งเก้าแห่งมีตำแหน่งที่เสนอแล้ว ส่วนภายในเกาะปิดยังไม่เปิดเผย';
+    unmappedAlert.hidden = !schematic;
+    unmappedAlert.textContent = schematic ? `${region.title} แสดงตำแหน่งและชายฝั่งอย่างหยาบตามข้อเสนอ ภายในเกาะและตำแหน่งต้นไม้ในตำนานยังไม่เปิดเผย` : '';
     facts.replaceChildren(); buttons.replaceChildren(); detail.replaceChildren();
     detail.hidden = !selectedPlace;
     if (region) {
       for (const [label,key] of [['ตำแหน่ง','position'],['ภูมิอากาศ','climate'],['ฐานเศรษฐกิจ','resources'],['อำนาจต่อรอง','leverage'],['ข้อจำกัด','vulnerability']]) {
         const row = node('div'); row.append(node('dt','',label),node('dd','',region[key])); facts.append(row);
       }
-      if (!region.mapped) {
+      if (schematic) {
         const terrain = node('div'); terrain.append(node('dt','','ภูมิประเทศ'),node('dd','',region.terrain)); facts.append(terrain);
       }
       if (region.legend) {
         const legend = node('div'); legend.append(node('dt','','ตำนาน · ยังไม่ยืนยันความจริง'),node('dd','',region.legend)); facts.append(legend);
       }
       buttons.append(node('h4','','สถานที่สำคัญ'));
-      if (!region.mapped) buttons.append(node('p','atlas-no-location','ยังไม่มีข้อมูลที่ตั้งและสถานที่สำคัญที่กำหนดไว้'));
+      if (schematic) buttons.append(node('p','atlas-no-location','ยังไม่เปิดเผยเมือง ท่าเรือ หรือสถานที่ภายในเกาะ ไม่มีหมุดยืนยันต้นไม้ในตำนาน'));
       for (const p of regionPlaces) {
         const button = node('button','atlas-place-button');
         button.type = 'button';
@@ -105,7 +106,7 @@
       marker.setAttribute('aria-pressed',String(current));
     }
     if (fitMap) fit(region);
-    status.textContent=selectedPlace ? `เลือก ${place.thai} ใน ${region.title}` : region ? region.mapped ? `เลือก ${region.title} · ${regionPlaces.length} สถานที่สำคัญ` : `เลือก ${region.title} · ยังไม่ระบุที่ตั้ง` : catalogSummary;
+    status.textContent=selectedPlace ? `เลือก ${place.thai} ใน ${region.title}` : region ? schematic ? `เลือก ${region.title} · ภายในไม่เปิดเผย` : `เลือก ${region.title} · ${regionPlaces.length} สถานที่สำคัญ` : catalogSummary;
     updateURL();
   }
   function activate(target) {

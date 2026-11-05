@@ -110,15 +110,18 @@ def main():
     assert len(kingdoms)==9
     mapped={k:v for k,v in kingdoms.items() if v['mapped']}
     unmapped={k:v for k,v in kingdoms.items() if not v['mapped']}
-    assert len(mapped)==7 and set(unmapped)=={'closed-kingdom','kingless-kingdom'}
-    for k in unmapped.values():
-        assert k['polygon'] is None and k['view'] is None and k['label'] is None, 'Unspecified kingdoms must not acquire invented coordinates'
+    assert len(mapped)==9 and not unmapped
+    assert kingdoms['closed-kingdom']['title']=='Nhalyra' and kingdoms['kingless-kingdom']['title']=='Orranth'
+    assert kingdoms['closed-kingdom']['mapConfidence']=='schematic', 'Closed-island outline must remain explicitly provisional'
     assert len([a for a in content['articles'] if a['category']=='kingdoms'])==9
     assert kingdoms['closed-kingdom']['landform']=='island'
+    closed_outline=kingdoms['closed-kingdom']['polygon']
+    assert closed_outline in atlas['islands']
+    assert all(not inside(p,atlas['mainland']) for p in closed_outline), 'Closed kingdom must remain a separate island'
     legend=next(a for a in content['articles'] if a['slug']=='tree-of-life')
     assert legend['status']=='legend', 'The tree origin story must stay explicitly unverified lore'
     place_ids={p['id'] for p in atlas['places']}
-    assert len(place_ids)==len(atlas['places'])==35, 'Expected 35 unique places'
+    assert len(place_ids)==len(atlas['places'])==40, 'Expected 40 unique places'
     assert 'tree-of-life' not in place_ids, 'A legendary tree must not acquire a factual map pin'
     for p in atlas['places']:
         assert p['visibility']=='public' and p['status']=='proposed'
@@ -150,23 +153,26 @@ def main():
     assert [p['id'] for p in rendered_atlas['places']]==[p['id'] for p in atlas['places']]
     assert all('('+reading(original['name'])+')' in rendered['name'] for original,rendered in zip(atlas['places'],rendered_atlas['places']))
     assert all('('+reading(a['title'])+')' in next(r for r in articles if r['slug']==a['id'])['title'] for a in mapped.values())
-    assert all(next(r for r in articles if r['slug']==a['id'])['title']==a['title'] for a in unmapped.values())
     assert {k['id'] for k in rendered_atlas['kingdoms']}==set(kingdoms)
     for k in kingdoms:
-        assert sum(p['kingdom']==k for p in atlas['places'])==(5 if k in mapped else 0)
-    for x in range(307,1260,13):
-        for y in range(67,930,13):
-            if inside((x,y),atlas['mainland']):
+        assert sum(p['kingdom']==k for p in atlas['places'])==(0 if k=='closed-kingdom' else 5)
+    for x in range(60,1360,13):
+        for y in range(60,930,13):
+            if any(inside((x,y),poly) for poly in [atlas['mainland']]+atlas['islands']):
                 assert sum(inside((x,y),k['polygon']) for k in mapped.values())==1, 'Gap or overlap between proposed regions'
     # A plotted land route must not cross the gulf just to connect two endpoints.
     for route in atlas['routes']:
+        for a,b in zip(route['points'],route['points'][1:]):
+            for t in (i/30 for i in range(31)):
+                point=(a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1]))
+                assert not inside(point,closed_outline), 'No established route may enter the closed island'
         if route['kind']!='land': continue
         for a,b in zip(route['points'],route['points'][1:]):
             for t in (i/30 for i in range(31)):
                 point=(a[0]+t*(b[0]-a[0]),a[1]+t*(b[1]-a[1]))
                 assert inside(point,atlas['mainland']), f'Land route crosses water: {route["id"]}'
     print(f'PASS: {len(pages)} pages, {count} internal links, metadata, fragments, and public-content boundary')
-    print('PASS: 9 kingdoms, 7 proposed map regions, 2 explicitly unlocated kingdoms, 35 placed landmarks, and land routes')
+    print('PASS: 9 proposed regions, 40 landmarks, a schematic closed island, no gaps or overlaps, and land routes')
     print('PASS: visible English coverage, bilingual SVG labels, search readings, and unchanged map identifiers')
 
 
