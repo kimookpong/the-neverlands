@@ -6,6 +6,7 @@ from pathlib import Path
 import re
 import sys
 from atlas import inside
+from pronunciation import PATTERN, reading
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,9 +23,15 @@ class Page(HTMLParser):
         self.title = False
         self.main = False
         self.h1_count = 0
+        self.text_stack = []
+        self.unread_english = []
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
+        if tag not in {'area','base','br','col','embed','hr','img','input','link','meta','param','source','track','wbr'}:
+            self.text_stack.append(tag)
+        if tag not in ('option','title'):
+            assert not ('option' in self.text_stack and tag=='span'), 'HTML markup inside a select option'
         if 'id' in a:
             assert a['id'] not in self.ids, f'Duplicate id: {a["id"]}'
             self.ids.add(a['id'])
@@ -35,6 +42,20 @@ class Page(HTMLParser):
         if tag == 'img': assert 'alt' in a, 'Image needs alt attribute'
         for key in ('href', 'src', 'action'):
             if a.get(key): self.links.append(a[key])
+
+    def handle_startendtag(self,tag,attrs):
+        self.handle_starttag(tag,attrs)
+        if self.text_stack and self.text_stack[-1]==tag:
+            self.text_stack.pop()
+
+    def handle_endtag(self,tag):
+        if tag in self.text_stack:
+            self.text_stack=self.text_stack[:len(self.text_stack)-1-self.text_stack[::-1].index(tag)]
+
+    def handle_data(self,text):
+        if not any(tag in ('script','style','pre','code') for tag in self.text_stack):
+            if re.search(r'[A-Za-z]{2,}',PATTERN.sub('',text)):
+                self.unread_english.append(text.strip())
 
 
 def main():
@@ -47,6 +68,7 @@ def main():
         p = Page()
         p.feed(f.read_text())
         assert p.lang == 'th' and p.title and p.main and p.h1_count == 1, f'Invalid page structure: {f}'
+        assert not p.unread_english, f'Visible English needs a Thai pronunciation entry: {f.relative_to(OUT)}: {p.unread_english}'
         pages[f] = p
     count = 0
     for f,p in pages.items():
@@ -92,6 +114,30 @@ def main():
         assert p['visibility']=='public' and p['status']=='proposed'
         assert p['kingdom'] in kingdoms and inside(p['point'],kingdoms[p['kingdom']]['polygon']), f'Place outside its region: {p["id"]}'
         assert any(inside(p['point'],poly) for poly in [atlas['mainland']]+atlas['islands']), f'Landmark in water: {p["id"]}'
+        assert reading(p['name']), f'Missing place pronunciation: {p["id"]}'
+    for k in atlas['kingdoms']:
+        assert reading(k['title']), f'Missing region pronunciation: {k["id"]}'
+    # Every map label has an adjacent reading in the exported vector, not only
+    # in the inspector. Native select options and the JS data must remain valid.
+    from xml.etree import ElementTree
+    svg=ElementTree.parse(OUT/'assets/neverlands-atlas.svg')
+    ns={'s':'http://www.w3.org/2000/svg'}
+    for label in svg.findall('.//s:text',ns):
+        if re.search('[A-Za-z]{2,}',label.text or ''):
+            assert label.find('s:tspan',ns) is not None, 'Map label lacks a visible Thai reading'
+    class Payload(HTMLParser):
+        def __init__(self):super().__init__();self.capture=False;self.parts=[]
+        def handle_starttag(self,t,attrs):
+            if t=='script' and dict(attrs).get('id')=='atlas-data':self.capture=True
+        def handle_endtag(self,t):
+            if t=='script':self.capture=False
+        def handle_data(self,s):
+            if self.capture:self.parts.append(s)
+    payload=Payload();payload.feed((OUT/'wiki/atlas/index.html').read_text())
+    rendered_atlas=json.loads(''.join(payload.parts))
+    assert [p['id'] for p in rendered_atlas['places']]==[p['id'] for p in atlas['places']]
+    assert all('('+reading(original['name'])+')' in rendered['name'] for original,rendered in zip(atlas['places'],rendered_atlas['places']))
+    assert all('('+reading(a['title'])+')' in next(r for r in articles if r['slug']==a['id'])['title'] for a in atlas['kingdoms'])
     for k in kingdoms:
         assert sum(p['kingdom']==k for p in atlas['places'])==5
     for x in range(307,1260,13):
@@ -107,6 +153,7 @@ def main():
                 assert inside(point,atlas['mainland']), f'Land route crosses water: {route["id"]}'
     print(f'PASS: {len(pages)} pages, {count} internal links, metadata, fragments, and public-content boundary')
     print('PASS: 7 proposed regions, 35 placed landmarks, regional coverage, and land routes')
+    print('PASS: visible English coverage, bilingual SVG labels, search readings, and unchanged map identifiers')
 
 
 if __name__ == '__main__':

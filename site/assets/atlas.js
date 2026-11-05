@@ -53,7 +53,7 @@
     selectedRegion = region ? region.id : '';
     selectedPlace = place && place.kingdom === selectedRegion ? place.id : '';
     picker.value = selectedRegion;
-    document.getElementById('atlas-inspector-kicker').textContent = region ? 'PROPOSED REGION · 5 LOCATIONS' : 'SEVEN REGIONS · 35 LOCATIONS';
+    document.getElementById('atlas-inspector-kicker').textContent = region ? 'ภูมิภาคข้อเสนอ · 5 สถานที่' : '7 ภูมิภาค · 35 สถานที่';
     title.textContent = region ? region.title : 'โลกที่ต้องพึ่งพากัน';
     description.textContent = region ? region.terrain : 'เลือกพื้นที่หรือจุดบนแผนที่เพื่ออ่านรายละเอียด อ่าวเวย์ร์เชื่อมลุ่มน้ำกลางกับทะเลเปิด โดยมี Varessia และ Myrthen อยู่คนละฝั่งของปากอ่าว';
     facts.replaceChildren(); buttons.replaceChildren(); detail.replaceChildren();
