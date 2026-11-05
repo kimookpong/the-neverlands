@@ -133,6 +133,10 @@ def main():
     assert events['visibility']=='public' and events['scope']=='background-only'
     assert events['status']=='accepted' and events['approvedAt']=='2026-11-05'
     public_articles={a['slug']:a for a in content['articles']}
+    assert public_articles['great-war']['category']=='history' and public_articles['great-war']['status']=='accepted'
+    assert cast['caelan']['kingdom']=='eldraven' and 'เอลเดรเวน' in cast['caelan']['bio']
+    assert ['สถานที่เติบโต','เอลเดรเวน'] in public_articles['caelan']['facts']
+    assert next(r for r in reader['heraldry'] if r['id']=='varessia')['ruler'].startswith('รัฐเดิมล่มสลาย')
     event_slugs={x['slug'] for x in events['events']}
     assert len(event_slugs)==len(events['events'])==8
     places=json.loads((ROOT/'content/atlas.json').read_text())['places']
