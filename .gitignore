@@ -1,0 +1,14 @@
+# Author-only working documents stay local. Never publish them with the reader wiki.
+/*.md
+!/README.md
+/world_bible_wiki.html
+/.publication-policy.json
+.DS_Store
+__pycache__/
+*.pyc
+/dist/
+/test-results/
+/node_modules/
+/.venv/
+.env
+.env.*

@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="600" viewBox="0 0 600 600" fill="none">
+<defs><pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse"><path d="M36 0H0V36" stroke="#b5aa7a" stroke-opacity=".08" stroke-width=".5"/></pattern>
+<pattern id="ticks" width="600" height="600"><path d="M300 62V72M300 528V538M62 300H72M528 300H538" stroke="#b5aa7a"/></pattern></defs>
+<rect x="0" y="0" width="600" height="600" fill="url(#grid)"/>
+<g stroke="#b5aa7a" stroke-width=".8">
+<circle cx="300" cy="300" r="242" stroke-opacity=".3"/>
+<circle cx="300" cy="300" r="229" stroke-opacity=".6"/>
+<circle cx="300" cy="300" r="221" stroke-opacity=".25"/>
+<circle cx="300" cy="300" r="185" stroke-opacity=".4"/>
+<circle cx="300" cy="300" r="176" stroke-opacity=".22"/>
+<circle cx="300" cy="300" r="115" stroke-opacity=".25"/>
+<circle cx="300" cy="300" r="66" stroke-opacity=".4"/>
+<path d="M300 18V582M18 300H582M100 100L500 500M100 500L500 100" stroke-opacity=".2"/>
+<ellipse cx="300" cy="300" rx="229" ry="82" transform="rotate(-25 300 300)" stroke-opacity=".35"/>
+<ellipse cx="300" cy="300" rx="229" ry="82" transform="rotate(65 300 300)" stroke-opacity=".35"/>
+<g id="t"><path d="M300 62V76M300 524V538M62 300H76M524 300H538"/><path d="M300 72V78M300 522V528M72 300H78M522 300H528" transform="rotate(15 300 300)"/><path d="M300 72V78M300 522V528M72 300H78M522 300H528" transform="rotate(30 300 300)"/></g>
+<use href="#t" transform="rotate(45 300 300)"/>
+<path d="M300 107L325 275L493 300L325 325L300 493L275 325L107 300L275 275Z" stroke-opacity=".75"/>
+<path d="M300 107V300L325 275ZM493 300H300L325 325ZM300 493V300L275 325ZM107 300H300L275 275Z" fill="#b5aa7a" fill-opacity=".22" stroke-opacity=".4"/>
+<path d="M184 184L300 269L416 184L331 300L416 416L300 331L184 416L269 300Z" stroke-opacity=".45"/>
+<circle cx="300" cy="300" r="15" fill="#18211b"/>
+<circle cx="300" cy="300" r="6" fill="#b5aa7a" fill-opacity=".35"/>
+<path d="M292 44L300 28L308 44M300 28V51M292 556L300 572L308 556M28 300H48M552 300H572" stroke-opacity=".6"/>
+</g>
+<g fill="#b5aa7a" font-family="Georgia,serif" text-anchor="middle" font-size="12" opacity=".7"><text x="300" y="96">N</text><text x="509" y="304">E</text><text x="300" y="516">S</text><text x="91" y="304">W</text></g>
+<g fill="#b5aa7a" opacity=".5"><circle cx="108" cy="175" r="2"/><circle cx="465" cy="133" r="2"/><circle cx="474" cy="450" r="2"/><circle cx="167" cy="475" r="2"/></g>
+</svg>
