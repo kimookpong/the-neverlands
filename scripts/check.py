@@ -8,6 +8,7 @@ import sys
 from atlas import inside
 from pronunciation import PATTERN, reading
 from author_reader import validate_export
+from manga import validate_manga
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -101,9 +102,17 @@ def main():
     assert all(a['visibility'] == 'public' for a in content['articles'])
     assert all(f.relative_to(OUT).parts[0] in {
         'index.html','404.html','wiki','categories','search','assets',
-        'search-index.json','sitemap.xml','robots.txt','.nojekyll','writer'
+        'search-index.json','sitemap.xml','robots.txt','.nojekyll','writer','manga'
     } for f in OUT.rglob('*')), 'Unexpected file in the website export'
     validate_export(OUT)
+    manga=json.loads((ROOT/'content/manga.json').read_text())
+    validate_manga(manga,OUT)
+    assert (OUT/'manga/index.html').exists()
+    assert {str(f.parent.relative_to(OUT/'manga')) for f in (OUT/'manga').glob('*/index.html')}=={ep['id'] for ep in manga['episodes']}
+    for ep in manga['episodes']:
+        body=(OUT/f'manga/{ep["id"]}/index.html').read_text()
+        assert body.count('class="manga-reader-page"')==ep['contentPages']+1
+        assert all(f'id="page-{p["number"]}"' in body for p in ep['pages'])
     articles = json.loads((OUT/'search-index.json').read_text())
     assert len(articles) == len(content['articles'])
     reader=json.loads((ROOT/'content/reader-guide.json').read_text())

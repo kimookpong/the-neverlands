@@ -12,6 +12,7 @@ from reader import character_catalog, profile_block, realm_block, heraldry_catal
 from events import event_catalog, event_context, event_links
 from pronunciation import annotate_data, annotate_html
 from author_reader import export_writer
+from manga import catalog as manga_catalog, episode_page as manga_episode, validate_manga
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist'
@@ -19,6 +20,7 @@ DATA = json.loads((ROOT / 'content/wiki.json').read_text())
 ATLAS = json.loads((ROOT / 'content/atlas.json').read_text())
 READER = json.loads((ROOT / 'content/reader-guide.json').read_text())
 EVENTS = json.loads((ROOT / 'content/events.json').read_text())
+MANGA = json.loads((ROOT / 'content/manga.json').read_text())
 ARTICLES = {a['slug']: a for a in DATA['articles']}
 CATEGORIES = {c['id']: c for c in DATA['categories']}
 STATUS = {'established': 'ข้อมูลพื้นฐาน', 'working': 'ชื่อชั่วคราว',
@@ -87,6 +89,7 @@ def shell(title, description, body, path='', category='', page_type='website', c
   <link rel="stylesheet" href="{url('assets/atlas.css')}">
   <link rel="stylesheet" href="{url('assets/reader.css')}?v={e(DATA['version'])}-manga1">
   <link rel="stylesheet" href="{url('assets/events.css')}?v={e(DATA['version'])}">
+  <link rel="stylesheet" href="{url('assets/manga.css')}?v=1">
   <script defer src="{url('assets/app.js')}"></script>
 </head>
 <body data-base="{BASE}">
@@ -100,6 +103,7 @@ def shell(title, description, body, path='', category='', page_type='website', c
 <div class="sidebar-rule"><span>สารานุกรมสำหรับผู้อ่าน</span><span>ฉบับพัฒนา</span></div>
   <nav aria-label="หมวดบทความ">
     <a class="nav-link {'active' if not path else ''}" href="{url()}" {'aria-current="page"' if not path else ''}><span class="nav-icon" aria-hidden="true">⌂</span><span>หน้าหลัก</span></a>
+    <a class="nav-link {'active' if category=='manga' else ''}" href="{url('manga/')}" {'aria-current="page"' if category=='manga' else ''}><span class="nav-icon" aria-hidden="true">▤</span><span>อ่านมังงะ</span><span class="nav-count">{len(MANGA['episodes']):02d}</span></a>
     <p class="nav-label">สำรวจจักรวาล</p>{nav}
   </nav>
   <div class="sidebar-bottom"><a class="about-link" href="{url('writer/')}">ห้องนักเขียน <span aria-hidden="true">🔒</span></a><a class="about-link" href="{article_url('about')}">เกี่ยวกับ Wiki <span aria-hidden="true">↗</span></a>
@@ -120,6 +124,7 @@ def home():
     reader_links = '<section class="reader-shortcuts" aria-label="สำรวจข้อมูลสำหรับผู้อ่าน">' + ''.join(
         f'<a href="{url(path)}"><span>{count}</span><h2>{title}</h2><p>{description}</p><b aria-hidden="true">↗</b></a>'
         for path,count,title,description in [
+            ('manga/',f'{len(MANGA["episodes"])} ตอนเผยแพร่แล้ว','อ่านมังงะ','ภาพขาวดำและเรื่องราวเรียงตามตอน'),
             ('categories/characters/','19 แบบมังงะขาวดำ','ตัวละครและความเชื่อมโยง','จุดจำ แบบตัวละครเต็ม และความสัมพันธ์ที่เปิดเผยได้'),
             ('wiki/heraldry/','9 ดินแดน','ตราและผู้ครองอำนาจ','เครื่องหมายกับสถานะตระกูลผู้ปกครอง'),
             ('wiki/fantasy-events/','8 เหตุการณ์','ร่องรอยแฟนตาซี','คำทำนาย พิธีกรรม ผู้คน และข้อพิพาทที่เชื่อมโลก'),
@@ -186,7 +191,7 @@ def category_page(c):
     if c['id']=='characters':
         return shell('ตัวละครสำคัญ','ภาพแนวคิด บทบาท และความเชื่อมโยงตัวละครที่เปิดเผยได้',character_catalog(READER,BASE),'categories/characters/','characters',crumbs='ตัวละคร')
     if c['id']=='story':
-        body='<div class="listing-page"><header class="listing-header"><p class="eyebrow">คู่มือการอ่าน</p><h1>องค์และบท</h1><p>ลำดับบทนำ สี่องค์ และบทส่งท้ายฉบับสำหรับผู้อ่าน</p></header>'+story_block(READER)+'</div>'
+        body='<div class="listing-page"><header class="listing-header"><p class="eyebrow">คู่มือการอ่าน</p><h1>องค์และบท</h1><p>ลำดับบทนำ สี่องค์ และบทส่งท้ายฉบับสำหรับผู้อ่าน</p></header>'+f'<a class="manga-entry-link" href="{url("manga/")}">อ่านเรื่องในฉบับมังงะ →</a>'+story_block(READER)+'</div>'
         return shell('องค์และบท',c['description'],body,'categories/story/','story',crumbs='องค์และบท')
     articles = [a for a in ARTICLES.values() if a['category'] == c['id']]
     body = f'''<div class="listing-page"><header class="listing-header"><p class="eyebrow">{e(c['english'])}</p><h1>{e(c['title'])}</h1><p>{e(c['description'])}</p><span class="listing-count">{len(articles):02d} บทความในหมวดนี้</span></header><div class="listing-grid">{''.join(card(a) for a in articles)}</div></div>'''
@@ -209,6 +214,7 @@ def write(path, content):
 
 
 def validate():
+    validate_manga(MANGA,ROOT/'site')
     if EVENTS['visibility']!='public' or EVENTS['scope']!='background-only':
         raise ValueError('Events must contain curated public background only')
     if READER['visibility']!='public' or READER['scope']!='opening-only':
@@ -241,6 +247,9 @@ def main():
         if realm['familyCrest']: write(realm['familyCrest'],crest_svg(realm,family=True))
     write('assets/neverlands-atlas.svg',render_svg(ATLAS,interactive=False))
     write('index.html',home())
+    write('manga/index.html',shell('มังงะ','อ่านเดอะ เนเวอร์แลนด์สฉบับมังงะเรียงตามตอน',manga_catalog(MANGA,BASE),'manga/','manga',crumbs='มังงะ'))
+    for ep in MANGA['episodes']:
+        write(f'manga/{ep["id"]}/index.html',shell(f'ตอน {ep["number"]} {ep["title"]}',ep['description'],manga_episode(ep,MANGA,BASE),f'manga/{ep["id"]}/','manga',crumbs=f'มังงะ · ตอน {ep["number"]}'))
     for a in ARTICLES.values():
         write(f'wiki/{a["slug"]}/index.html',article_page(a))
     for c in CATEGORIES.values():
@@ -253,7 +262,7 @@ def main():
         text=' '.join(p for s in a['sections'] for p in s['paragraphs']) +
         (' ' + ' '.join(p['name']+' '+p['thai']+' '+p['role']+' '+p['strategic'] for p in ATLAS['places']) if a['slug']=='atlas' else '')) for a in ARTICLES.values()]
     write('search-index.json',json.dumps(annotate_data(index),ensure_ascii=False))
-    paths = ['']+[f'wiki/{a}/' for a in ARTICLES]+[f'categories/{c}/' for c in CATEGORIES]
+    paths = ['','manga/']+[f'manga/{ep["id"]}/' for ep in MANGA['episodes']]+[f'wiki/{a}/' for a in ARTICLES]+[f'categories/{c}/' for c in CATEGORIES]
     write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{ORIGIN}{url(p)}</loc></url>' for p in paths)+'</urlset>')
     write('robots.txt',f'User-agent: *\nAllow: /\nDisallow: {url("writer/")}\nSitemap: {ORIGIN}{url("sitemap.xml")}\n')
     write('.nojekyll','')
