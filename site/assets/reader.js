@@ -7,7 +7,7 @@
   const query=document.getElementById('cast-query'),affiliation=document.getElementById('cast-affiliation');
   const cards=[...document.querySelectorAll('.cast-card')];
   function node(tag,cls,text){const e=document.createElement(tag);if(cls)e.className=cls;if(text!==undefined)e.textContent=text;return e;}
-  function photo(p){const img=node('img');img.src=p.portrait;img.alt='ภาพแนวคิดของ '+p.name;img.width=80;img.height=104;img.loading='lazy';return img;}
+  function photo(p){const frame=node('span','relation-photo'),img=node('img',p.artFormat==='manga-sheet'?'manga-portrait':'');img.src=p.portrait;img.alt='ภาพแนวคิดของ '+p.name;img.width=p.artFormat==='manga-sheet'?1536:80;img.height=p.artFormat==='manga-sheet'?1024:104;img.loading='lazy';frame.append(img);return frame;}
   function draw(){
     const p=people.get(personPicker.value);if(!p)return;
     focus.replaceChildren();results.replaceChildren();

@@ -114,6 +114,10 @@ def main():
     assert {a['character'] for a in artwork['portraits']}==set(cast)
     for person in cast.values():
         assert (OUT/person['portrait']).exists() and reading(person['name'])
+        art=next(a for a in artwork['portraits'] if a['character']==person['id'])
+        assert art['path']==person['portrait'] and art['style']=='monochrome-manga'
+        assert person['artFormat']=='manga-sheet' and person['appearance']
+        assert (art['width'],art['height'])==(person['portraitWidth'],person['portraitHeight'])==(1536,1024)
         assert person['status'] in {'working','proposed'}
         assert next(a for a in content['articles'] if a['slug']==person['id'])['category']=='characters'
     known_pairs={frozenset((r['source'],r['target'])) for r in reader['relations'] if r['kind']=='known'}

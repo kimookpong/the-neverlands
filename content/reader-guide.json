@@ -2,7 +2,7 @@
   "version": "0.5",
   "visibility": "public",
   "scope": "opening-only",
-  "artNote": "ภาพและเครื่องหมายเป็นแนวคิดรูปลักษณ์ระหว่างพัฒนา ยังปรับได้",
+  "artNote": "แบบตัวละครมังงะขาวดำระหว่างพัฒนา รูปลักษณ์และรายละเอียดกายภาพยังปรับได้",
   "characters": [
     {
       "id": "caelan",
@@ -13,8 +13,12 @@
       "role": "ผู้เติบโตท่ามกลางผลของสงคราม",
       "bio": "เสียแม่เมื่ออายุสามขวบระหว่างวาเรสเซียล่มสลาย เมรอนช่วยและเลี้ยงในเอลเดรเวน เขายังเชื่อว่าตนเป็นคนวาเรสเซีย",
       "status": "working",
-      "portrait": "assets/portraits/caelan.webp",
-      "portraitAlt": "ภาพแนวคิดของเคแลน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/caelan-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเคแลน รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมดำยุ่ง ใบหน้าเชิงเหลี่ยม รูปร่างเพรียว เสื้อกั๊กดำและผ้าคลุมสั้น"
     },
     {
       "id": "seraya",
@@ -25,8 +29,12 @@
       "role": "นักการทูต",
       "bio": "ผู้เจรจาจากเมอร์เธน สนใจการค้า ข้อตกลง และทางเลือกที่ทำให้ฝ่ายขัดแย้งยังพูดคุยกันได้",
       "status": "working",
-      "portrait": "assets/portraits/seraya.webp",
-      "portraitAlt": "ภาพแนวคิดของเซรายา เวนน์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/seraya-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเซรายา เวนน์ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมแสกข้างรวบต่ำ ใบหน้ายาว ชุดคอสูงทรงตรง"
     },
     {
       "id": "maeron",
@@ -37,8 +45,12 @@
       "role": "อดีตทหารและผู้ดูแลเคแลน",
       "bio": "อดีตทหารและคนรู้จักผู้ช่วยเคแลนระหว่างวาเรสเซียล่มสลาย ก่อนพาเด็กไปเลี้ยงในเอลเดรเวน",
       "status": "working",
-      "portrait": "assets/portraits/maeron.webp",
-      "portraitAlt": "ภาพแนวคิดของเมรอน เวล ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/maeron-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเมรอน เวล รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมยาวรวบหลวมแซมหงอก หนวดหนา จมูกคด เสื้อกั๊กและกระเป๋าสะพาย"
     },
     {
       "id": "roderic",
@@ -49,8 +61,12 @@
       "role": "กษัตริย์แห่งเอลเดรเวน",
       "bio": "ผู้ครองเอลเดรเวนในช่วงต้นเรื่อง ราชสำนัก กองทัพ และผู้มีผลประโยชน์หลายฝ่ายเกี่ยวข้องกับอำนาจของพระองค์",
       "status": "working",
-      "portrait": "assets/portraits/roderic.webp",
-      "portraitAlt": "ภาพแนวคิดของรอเดอริกที่สี่ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/roderic-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของรอเดอริกที่สี่ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "กรามเหลี่ยม ผมเสย หนวดเคราปลายแหลม ชุดดำคอสูงและมงกุฎทรงกว้าง"
     },
     {
       "id": "elira",
@@ -61,8 +77,12 @@
       "role": "นักพิมพ์และผู้ประสานข่าวสาร",
       "bio": "ทำงานเกี่ยวกับสิ่งพิมพ์ การเผยแพร่ความคิด และเครือข่ายผู้คนในวาเรสเซีย เนื้อหาแต่ละชิ้นมีทั้งผู้ส่ง ผู้รับ และผู้ได้รับผล",
       "status": "working",
-      "portrait": "assets/portraits/elira-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของเอลิรา เวนน์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/elira-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเอลิรา เวนน์ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมหยิกสั้นสีอ่อน ใบหน้ากว้าง แขนเสื้อพับและผ้ากันเปื้อนดำ"
     },
     {
       "id": "orven",
@@ -73,8 +93,12 @@
       "role": "ผู้ดูแลบันทึก",
       "bio": "ผู้ให้ความสำคัญกับที่มา ความครบถ้วน และข้อจำกัดของเอกสาร วางตัวเป็นกลางในการประเมินข้อมูล",
       "status": "working",
-      "portrait": "assets/portraits/orven.webp",
-      "portraitAlt": "ภาพแนวคิดของออร์เวน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/orven-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของออร์เวน รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ศีรษะล้านกลาง วงผมขาว แว่นกลม จมูกงุ้มและเคราคางเล็ก"
     },
     {
       "id": "luceran",
@@ -85,8 +109,12 @@
       "role": "เจ้าชายแห่งเอลเดรเวน",
       "bio": "พระโอรสของรอเดอริกที่สี่ เป็นส่วนหนึ่งของราชสำนักเอลเดรเวน บทความนี้จำกัดสถานะช่วงต้นและไม่ระบุเส้นทางในอนาคต",
       "status": "working",
-      "portrait": "assets/portraits/luceran-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของพรินซ์ ลูเซรัน รอเดอริก ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/luceran-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของพรินซ์ ลูเซรัน รอเดอริก รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมสีอ่อนปัดข้าง ใบหน้าเรียว เสื้อคลุมยาวสีอ่อนกับคอเสื้อดำ"
     },
     {
       "id": "halvaren",
@@ -97,8 +125,12 @@
       "role": "หัวหน้าขบวนการต่อต้าน",
       "bio": "น้าชายของรอเดอริกที่สี่ ผู้ประสานขบวนการซึ่งมีผู้ร่วมงานและเครือข่ายอยู่ก่อนเคแลนเข้ามา มีความสำคัญต่อการจัดตั้งช่วงต้น",
       "status": "working",
-      "portrait": "assets/portraits/halvaren.webp",
-      "portraitAlt": "ภาพแนวคิดของฮัลวาเรน ดอร์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/halvaren-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของฮัลวาเรน ดอร์ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ใบหน้าและจมูกมน ผมบางแซมหงอก เคราสั้นเต็มและผ้าคลุมไหล่กว้าง"
     },
     {
       "id": "thessa",
@@ -109,8 +141,12 @@
       "role": "ผู้ประสานงานเสบียงชุมชน",
       "bio": "บทบาทที่เสนอคือผู้จัดการข้อมูลอาหาร การแจกจ่าย และข้อร้องเรียนของครัวเรือน โดยต้องตอบคำถามจากผู้รับภาระจริง",
       "status": "proposed",
-      "portrait": "assets/portraits/thessa-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของเธสซา คอร์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/thessa-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเธสซา คอร์ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "คิ้วหนาตรง ใบหน้าเหลี่ยมกว้าง เปียม้วนสูงและแขนแข็งแรง"
     },
     {
       "id": "damar",
@@ -121,8 +157,12 @@
       "role": "นายทหาร",
       "bio": "บทบาทที่เสนอคือผู้มีประสบการณ์ด้านกำลังพล เสบียง และสายบังคับบัญชา ให้ความสำคัญกับกองทัพที่ทำงานต่อเนื่องได้",
       "status": "proposed",
-      "portrait": "assets/portraits/damar.webp",
-      "portraitAlt": "ภาพแนวคิดของดามาร์ เวสก์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/damar-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของดามาร์ เวสก์ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมสั้นเปิดหน้าผาก กรามเหลี่ยม ไหล่ตรงและเกราะเรียบ"
     },
     {
       "id": "nerys",
@@ -133,8 +173,12 @@
       "role": "ผู้เจรจาการเงินเดินเรือ",
       "bio": "บทบาทที่เสนอคือผู้ประสานสินเชื่อและความเสี่ยงของการขนส่งทางทะเล มีภาระต่อเจ้าของเรือ ผู้ให้ทุน และผู้พึ่งพาการค้า",
       "status": "proposed",
-      "portrait": "assets/portraits/nerys-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของเนริส โอวริน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/nerys-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเนริส โอวริน รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "รูปร่างอวบสง่า ผมหยิกสั้นแน่น ใบหน้ากลมและเสื้อหลายชั้นปกสีอ่อน"
     },
     {
       "id": "othrek",
@@ -145,8 +189,12 @@
       "role": "ตัวแทนโรงช่างโลหะ",
       "bio": "บทบาทที่เสนอเกี่ยวข้องกับงานโลหะ โรงช่าง แรงงาน และการส่งมอบสินค้า การผลิตมีข้อจำกัดด้านวัตถุดิบและชีวิตผู้ทำงาน",
       "status": "proposed",
-      "portrait": "assets/portraits/othrek.webp",
-      "portraitAlt": "ภาพแนวคิดของออธเรก ซาร์น ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/othrek-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของออธเรก ซาร์น รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "คอหนา ไหล่กว้าง ผมสั้น เครากรอบและผ้ากันเปื้อนสีอ่อน"
     },
     {
       "id": "ysol",
@@ -157,8 +205,12 @@
       "role": "ผู้เจรจาราชสำนัก",
       "bio": "บทบาทที่เสนอคือผู้ต่อรองผลประโยชน์ของราชสำนักออเรแวน ต้องรับมือเงื่อนไขการทูตและกลุ่มอำนาจที่มีความต้องการต่างกัน",
       "status": "proposed",
-      "portrait": "assets/portraits/ysol-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของอีซอล วาเร็ธ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/ysol-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของอีซอล วาเร็ธ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมบ๊อบสีอ่อนตัดตรง ใบหน้าแคบ ตาเรียวและชุดดำทรงยาว"
     },
     {
       "id": "evara",
@@ -169,8 +221,12 @@
       "role": "ผู้ประสานชุมชนและผู้ดูแลความรู้ท้องถิ่น",
       "bio": "บทบาทที่เสนอเชื่อมผู้คน สิทธิชุมชน และความรู้ที่สืบต่อกันในซิลวารา ยังไม่ยืนยันตำแหน่งทางศาสนาหรือความสามารถเฉพาะ",
       "status": "proposed",
-      "portrait": "assets/portraits/evara-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของเอวารา เธนน์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/evara-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเอวารา เธนน์ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมยาวหยักศกสีอ่อนแซมเปียเล็ก จมูกโด่งและผ้าทอขอบไม่เสมอ"
     },
     {
       "id": "kesra",
@@ -181,8 +237,12 @@
       "role": "ผู้เจรจาชุมชนชายแดน",
       "bio": "บทบาทที่เสนอคือผู้ประสานข้อเรียกร้องของชุมชนซึ่งมีภาระและผลประโยชน์ต่างกันในดราโคเรีย",
       "status": "proposed",
-      "portrait": "assets/portraits/kesra-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของเคสรา เวย์ ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/kesra-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเคสรา เวย์ รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ผมไถข้างกับลอนหยิกสูง เสื้อสองข้างต่างกันและท่ายืนคล่องตัว"
     },
     {
       "id": "irsen",
@@ -193,8 +253,12 @@
       "role": "ผู้รวบรวมบันทึกท้องถิ่น",
       "bio": "บทบาทที่เสนอเกี่ยวข้องกับการเก็บเอกสาร คำให้การ และที่มาของข้อมูลท้องถิ่น บทความนี้แสดงเพียงชื่อใช้งานและขอบเขตงาน",
       "status": "proposed",
-      "portrait": "assets/portraits/irsen-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของเออร์เซน ทาล ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/irsen-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเออร์เซน ทาล รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "หน้าผากสูง ผมหวีเรียบ หนวดบาง จมูกโค้งและผ้าคลุมสั้นทรงกว้าง"
     },
     {
       "id": "rhuven",
@@ -205,8 +269,12 @@
       "role": "ผู้เจรจาของชุมชนวอร์แห่งหนึ่ง",
       "bio": "บทบาทที่เสนอคือผู้แทนชุมชนวอร์ที่มีข้อเรียกร้องและขอบเขตมอบอำนาจของตน ไม่ได้เป็นผู้แทนยักษ์ทั้งหมด",
       "status": "proposed",
-      "portrait": "assets/portraits/rhuven.webp",
-      "portraitAlt": "ภาพแนวคิดของรูเวน ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/rhuven-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของรูเวน รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "สัดส่วนยักษ์ลำตัวใหญ่ แขนยาว มือหนา เปียสองข้างและเครากว้าง"
     },
     {
       "id": "saev",
@@ -217,8 +285,12 @@
       "role": "ผู้เจรจาของชุมชนเนไรแห่งหนึ่ง",
       "bio": "บทบาทที่เสนอคือผู้แทนชุมชนชาวทะเลซึ่งมีชีวิตและสิทธิของตน ไม่ได้เป็นผู้แทนเนไรทุกชุมชน",
       "status": "proposed",
-      "portrait": "assets/portraits/saev.webp",
-      "portraitAlt": "ภาพแนวคิดของเซฟ เนรัล ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/saev-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเซฟ เนรัล รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "รูปร่างสูงบาง ผมลู่รวบต่ำ ใบหน้าเรียวและมือยาว รายละเอียดหูและพังผืดยังเป็นแบบทดลอง"
     },
     {
       "id": "vaelor",
@@ -229,8 +301,12 @@
       "role": "กษัตริย์ออเรแวนผู้เริ่มสงคราม",
       "bio": "กษัตริย์ผู้มีอาการวิกลจริตและเริ่มสงครามระหว่างอาณาจักรหลังช่วงสงบ ได้รับฉายา Mad King",
       "status": "working",
-      "portrait": "assets/portraits/vaelor-v2.webp",
-      "portraitAlt": "ภาพแนวคิดของเวเลอร์ที่สาม ยังไม่ยืนยันรูปลักษณ์ถาวร"
+      "portrait": "assets/manga/vaelor-manga-v1.webp",
+      "portraitAlt": "แบบตัวละครมังงะขาวดำของเวเลอร์ที่สาม รูปลักษณ์ระหว่างพัฒนา",
+      "portraitWidth": 1536,
+      "portraitHeight": 1024,
+      "artFormat": "manga-sheet",
+      "appearance": "ใบหน้าผอมตอบ คอยาว ผมบาง ชุดดำยาวและมงกุฎยอดเรียว"
     }
   ],
   "relations": [

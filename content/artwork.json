@@ -1,158 +1,177 @@
 {
   "visibility": "public",
-  "note": "ภาพแนวคิด ยังไม่ยืนยันรูปลักษณ์ถาวร",
+  "note": "แบบตัวละครมังงะขาวดำระหว่างพัฒนา รูปลักษณ์และรายละเอียดกายภาพยังปรับได้",
   "portraits": [
     {
       "character": "caelan",
-      "path": "assets/portraits/caelan.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/caelan-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "seraya",
-      "path": "assets/portraits/seraya.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/seraya-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "maeron",
-      "path": "assets/portraits/maeron.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/maeron-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "elira",
-      "path": "assets/portraits/elira-v2.webp",
-      "width": 1097,
-      "height": 1434,
+      "path": "assets/manga/elira-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "roderic",
-      "path": "assets/portraits/roderic.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/roderic-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "orven",
-      "path": "assets/portraits/orven.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/orven-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "luceran",
-      "path": "assets/portraits/luceran-v2.webp",
-      "width": 1024,
-      "height": 1536,
+      "path": "assets/manga/luceran-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "halvaren",
-      "path": "assets/portraits/halvaren.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/halvaren-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "thessa",
-      "path": "assets/portraits/thessa-v2.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/thessa-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "damar",
-      "path": "assets/portraits/damar.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/damar-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "nerys",
-      "path": "assets/portraits/nerys-v2.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/nerys-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "othrek",
-      "path": "assets/portraits/othrek.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/othrek-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "evara",
-      "path": "assets/portraits/evara-v2.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/evara-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "ysol",
-      "path": "assets/portraits/ysol-v2.webp",
-      "width": 1024,
-      "height": 1536,
+      "path": "assets/manga/ysol-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "kesra",
-      "path": "assets/portraits/kesra-v2.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/kesra-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "irsen",
-      "path": "assets/portraits/irsen-v2.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/irsen-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "rhuven",
-      "path": "assets/portraits/rhuven.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/rhuven-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "saev",
-      "path": "assets/portraits/saev.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/saev-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     },
     {
       "character": "vaelor",
-      "path": "assets/portraits/vaelor-v2.webp",
-      "width": 1086,
-      "height": 1448,
+      "path": "assets/manga/vaelor-manga-v1.webp",
+      "width": 1536,
+      "height": 1024,
       "provisional": true,
-      "method": "generated"
+      "method": "generated",
+      "style": "monochrome-manga"
     }
   ]
 }

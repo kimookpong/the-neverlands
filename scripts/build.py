@@ -85,7 +85,7 @@ def shell(title, description, body, path='', category='', page_type='website', c
   <link rel="canonical" href="{canonical}"><link rel="icon" type="image/svg+xml" href="{url('assets/favicon.svg')}">
   <link rel="stylesheet" href="{url('assets/styles.css')}">
   <link rel="stylesheet" href="{url('assets/atlas.css')}">
-  <link rel="stylesheet" href="{url('assets/reader.css')}?v={e(DATA['version'])}">
+  <link rel="stylesheet" href="{url('assets/reader.css')}?v={e(DATA['version'])}-manga1">
   <link rel="stylesheet" href="{url('assets/events.css')}?v={e(DATA['version'])}">
   <script defer src="{url('assets/app.js')}"></script>
 </head>
@@ -120,7 +120,7 @@ def home():
     reader_links = '<section class="reader-shortcuts" aria-label="สำรวจข้อมูลสำหรับผู้อ่าน">' + ''.join(
         f'<a href="{url(path)}"><span>{count}</span><h2>{title}</h2><p>{description}</p><b aria-hidden="true">↗</b></a>'
         for path,count,title,description in [
-            ('categories/characters/','19 ภาพแนวคิด','ตัวละครและความเชื่อมโยง','บทบาท สังกัด และความสัมพันธ์ที่เปิดเผยได้'),
+            ('categories/characters/','19 แบบมังงะขาวดำ','ตัวละครและความเชื่อมโยง','จุดจำ แบบตัวละครเต็ม และความสัมพันธ์ที่เปิดเผยได้'),
             ('wiki/heraldry/','9 ดินแดน','ตราและผู้ครองอำนาจ','เครื่องหมายกับสถานะตระกูลผู้ปกครอง'),
             ('wiki/fantasy-events/','8 เหตุการณ์','ร่องรอยแฟนตาซี','คำทำนาย พิธีกรรม ผู้คน และข้อพิพาทที่เชื่อมโลก'),
             ('wiki/story-outline/','4 องค์ · 41 บท','ลำดับองค์และบท','ชื่อฉบับสำหรับผู้อ่านที่เก็บจุดหักมุมไว้')]) + '</section>'
