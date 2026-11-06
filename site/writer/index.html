@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="robots" content="noindex, nofollow, noarchive">
+  <meta name="referrer" content="no-referrer">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; connect-src 'self'; img-src 'self' data:; base-uri 'none'; form-action 'none'; object-src 'none'">
+  <meta name="theme-color" content="#141b16">
+  <title>ห้องนักเขียน | The Neverlands (เดอะ เนเวอร์แลนด์ส)</title>
+  <meta name="description" content="ห้องนักเขียนฉบับอ่านอย่างเดียว เปิดข้อมูลที่เข้ารหัสด้วยรหัสผ่าน ไม่มีการแก้ไขหรือบันทึก">
+  <link rel="icon" href="__BASE__assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="__BASE__writer/styles.css">
+  <script type="module" src="__BASE__writer/reader.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">ข้ามไปยังเนื้อหา</a>
+  <header class="masthead">
+    <a class="brand" href="__BASE__"><span class="seal" aria-hidden="true">N</span><span><strong>The Neverlands <small>(เดอะ เนเวอร์แลนด์ส)</small></strong><span class="brand-caption">บันทึกเบื้องหลังเรื่องเล่า</span></span></a>
+    <div class="header-actions"><a href="__BASE__">กลับวิกิผู้อ่าน ↗</a><button id="lock" hidden>ล็อกเนื้อหา</button></div>
+  </header>
+  <main id="main">
+    <section id="gate" class="gate" aria-labelledby="gate-title">
+      <p class="eyebrow">สำหรับผู้เขียน · มีปมเฉลยและตอนจบ</p>
+      <h1 id="gate-title">ห้องนักเขียน</h1>
+      <p class="gate-lead">อ่านต้นฉบับตามลำดับองค์ บท และตอน<br>พร้อมแผนการเล่าและบันทึกพัฒนาเรื่อง</p>
+      <div class="gate-rule"></div>
+      <form id="unlock-form" autocomplete="off">
+        <label for="password">รหัสผ่านสำหรับเปิดข้อมูล</label>
+        <div class="unlock-row"><input id="password" type="password" autocomplete="off" required aria-describedby="unlock-note" spellcheck="false"><button id="unlock" type="submit">เปิดห้องนักเขียน <span aria-hidden="true">→</span></button></div>
+        <p id="message" role="alert" hidden></p>
+      </form>
+      <p class="gate-note" id="unlock-note">ข้อมูลถูกเข้ารหัสก่อนเผยแพร่ รหัสผ่านใช้ถอดรหัสในหน้านี้<br>ฉบับอ่านอย่างเดียว ไม่มีการแก้ไข บันทึก หรือส่งข้อมูลกลับ</p>
+      <noscript><p>กรุณาเปิดการทำงานของสคริปต์ในเบราว์เซอร์เพื่อถอดรหัสและอ่านข้อมูล</p></noscript>
+    </section>
+    <section id="desk" hidden aria-label="คลังข้อมูลนักเขียน">
+      <div class="desk-heading"><div><p class="eyebrow">ห้องนักเขียน</p><h2>คลังต้นฉบับและแผนเรื่อง</h2><p id="snapshot" class="muted"></p></div><span class="read-only">อ่านอย่างเดียว</span></div>
+      <nav class="views" aria-label="รูปแบบการอ่าน"><button data-view="outline" aria-pressed="false">องค์ → บท → ตอน</button><button data-view="read" aria-pressed="true">อ่านต้นฉบับ</button><button data-view="library" aria-pressed="false">แผนและเอกสาร</button></nav>
+      <div class="view" id="view-outline" hidden>
+        <div class="outline-grid"><aside class="outline-sidebar"><label for="outline-query">ค้นหาบท ตอน และตัวละคร</label><input id="outline-query" type="search" autocomplete="off" placeholder="ค้นหาในโครงเรื่อง…"><nav id="outline-tree" aria-label="องค์และบท"></nav></aside><section id="episode-detail" class="episode-detail" aria-label="รายละเอียดตอน"></section></div>
+      </div>
+      <div class="view" id="view-read">
+        <header class="reading-tools"><div><h3>ต้นฉบับของเรื่อง</h3><p id="reading-count" class="muted"></p></div><div class="chapter-picker"><label for="chapter-select">เลือกบทที่อ่าน</label><select id="chapter-select"></select></div></header>
+        <p class="draft-note">ร่างสำหรับตรวจเรื่องและขัดเกลา ป้ายแต่ละตอนแสดงระดับร่างปัจจุบัน</p>
+        <details class="contents"><summary>สารบัญบทที่แสดง</summary><nav id="reading-toc" aria-label="สารบัญต้นฉบับ"></nav></details>
+        <div id="manuscript" class="manuscript"></div>
+      </div>
+      <div class="view" id="view-library" hidden>
+        <div class="library-grid"><aside class="document-sidebar"><label for="document-query">ค้นหาในเอกสาร</label><input id="document-query" type="search" autocomplete="off" placeholder="ชื่อเอกสารหรือคำในเนื้อหา…"><p id="document-count" class="muted"></p><nav id="document-list" aria-label="เลือกเอกสาร"></nav></aside><article class="document-reader" aria-labelledby="document-title"><header><p id="document-state" class="eyebrow"></p><h3 id="document-title"></h3></header><div id="document-content" class="document-content"></div></article></div>
+      </div>
+      <p class="snapshot-note">เป็นข้อมูลฉบับเผยแพร่ การปรับต้นฉบับในเครื่องจะปรากฏที่นี่หลังเผยแพร่ฉบับใหม่</p>
+    </section>
+  </main>
+  <footer class="site-footer"><span>ห้องนักเขียน · ฉบับอ่านอย่างเดียว</span><span>ต้นฉบับและรายละเอียดพัฒนายังแก้ไขต่อได้</span></footer>
+</body>
+</html>

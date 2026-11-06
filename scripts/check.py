@@ -7,6 +7,7 @@ import re
 import sys
 from atlas import inside
 from pronunciation import PATTERN, reading
+from author_reader import validate_export
 from urllib.parse import unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -100,8 +101,9 @@ def main():
     assert all(a['visibility'] == 'public' for a in content['articles'])
     assert all(f.relative_to(OUT).parts[0] in {
         'index.html','404.html','wiki','categories','search','assets',
-        'search-index.json','sitemap.xml','robots.txt','.nojekyll'
+        'search-index.json','sitemap.xml','robots.txt','.nojekyll','writer'
     } for f in OUT.rglob('*')), 'Unexpected file in the website export'
+    validate_export(OUT)
     articles = json.loads((OUT/'search-index.json').read_text())
     assert len(articles) == len(content['articles'])
     reader=json.loads((ROOT/'content/reader-guide.json').read_text())
@@ -228,6 +230,7 @@ def main():
     print('PASS: visible English coverage, bilingual SVG labels, search readings, and unchanged map identifiers')
     print('PASS: 19 portraits, reviewed opening-only relationships, 9 provisional realm symbols and 41 safe chapter labels')
     print('PASS: 8 approved background events, public-only metadata, reciprocal connections and existing map locations')
+    print('PASS: read-only author viewer, encrypted snapshot only, no persistence or author documents in the export')
 
 
 if __name__ == '__main__':

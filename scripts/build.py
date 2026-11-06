@@ -11,6 +11,7 @@ from atlas import atlas_block, render_svg
 from reader import character_catalog, profile_block, realm_block, heraldry_catalog, story_block, crest_svg
 from events import event_catalog, event_context, event_links
 from pronunciation import annotate_data, annotate_html
+from author_reader import export_writer
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / 'dist'
@@ -101,7 +102,7 @@ def shell(title, description, body, path='', category='', page_type='website', c
     <a class="nav-link {'active' if not path else ''}" href="{url()}" {'aria-current="page"' if not path else ''}><span class="nav-icon" aria-hidden="true">⌂</span><span>หน้าหลัก</span></a>
     <p class="nav-label">สำรวจจักรวาล</p>{nav}
   </nav>
-  <div class="sidebar-bottom"><a class="about-link" href="{article_url('about')}">เกี่ยวกับ Wiki <span aria-hidden="true">↗</span></a>
+  <div class="sidebar-bottom"><a class="about-link" href="{url('writer/')}">ห้องนักเขียน <span aria-hidden="true">🔒</span></a><a class="about-link" href="{article_url('about')}">เกี่ยวกับ Wiki <span aria-hidden="true">↗</span></a>
     <div class="work-status"><span class="status-dot"></span>โลกนี้กำลังเติบโต<span>บันทึกโลก · รุ่น {e(DATA['version'])}</span></div></div>
 </aside>
 <div class="workspace">
@@ -234,6 +235,7 @@ def main():
         shutil.rmtree(OUT)
     OUT.mkdir()
     shutil.copytree(ROOT/'site/assets',OUT/'assets')
+    export_writer(ROOT,OUT,BASE)
     for realm in READER['heraldry']:
         write(realm['crest'],crest_svg(realm))
         if realm['familyCrest']: write(realm['familyCrest'],crest_svg(realm,family=True))
@@ -253,7 +255,7 @@ def main():
     write('search-index.json',json.dumps(annotate_data(index),ensure_ascii=False))
     paths = ['']+[f'wiki/{a}/' for a in ARTICLES]+[f'categories/{c}/' for c in CATEGORIES]
     write('sitemap.xml','<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">'+''.join(f'<url><loc>{ORIGIN}{url(p)}</loc></url>' for p in paths)+'</urlset>')
-    write('robots.txt',f'User-agent: *\nAllow: /\nSitemap: {ORIGIN}{url("sitemap.xml")}\n')
+    write('robots.txt',f'User-agent: *\nAllow: /\nDisallow: {url("writer/")}\nSitemap: {ORIGIN}{url("sitemap.xml")}\n')
     write('.nojekyll','')
     print(f'Built {len(ARTICLES)} public articles, {len(CATEGORIES)} categories → {OUT} (base {BASE})')
 

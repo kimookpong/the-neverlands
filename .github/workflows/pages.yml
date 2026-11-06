@@ -20,11 +20,16 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
+      - uses: actions/setup-node@v6
+        with:
+          node-version: '22'
       - uses: actions/configure-pages@v6
       - name: Build public reader wiki
         run: python3 scripts/build.py
       - name: Verify links and public-only output
         run: python3 scripts/check.py
+      - name: Verify read-only viewer cryptography
+        run: node scripts/check_writer_reader.mjs
       - uses: actions/upload-pages-artifact@v5
         with:
           path: dist
