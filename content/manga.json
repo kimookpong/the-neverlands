@@ -304,6 +304,357 @@
      "height": 1536
     }
    ]
+  },
+  {
+   "id": "2-1",
+   "number": "2.1",
+   "title": "เรื่องที่ถูกอ่านซ้ำ",
+   "chapter": "แผ่นดินแห่งเถ้าถ่าน",
+   "description": "ผู้เล่าคัดลอกบันทึกที่เด็ก ๆ ท่องกันในพิธี แล้วพบว่าชื่อที่ถูกอ่านซ้ำมีบางส่วนอ่านไม่ได้ และมีผู้ขอให้ตัดบางฉบับออก",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/2-1/cover.webp",
+   "contentPages": 11,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/2-1/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/2-1/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/2-1/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/2-1/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/2-1/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/2-1/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/2-1/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/2-1/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/2-1/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/2-1/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/2-1/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/2-1/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  },
+  {
+   "id": "2-2",
+   "number": "2.2",
+   "title": "ช่องว่างในคำประกาศ",
+   "chapter": "แผ่นดินแห่งเถ้าถ่าน",
+   "description": "รอยร่องน้ำใต้ตู้เอกสารพาผู้เล่าไปสืบว่าใครทำ และต้องตัดสินใจว่าจะจดสิ่งที่ไม่รู้ลงบัญชีอย่างไร",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/2-2/cover.webp",
+   "contentPages": 13,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/2-2/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/2-2/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/2-2/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/2-2/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/2-2/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/2-2/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/2-2/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/2-2/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/2-2/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/2-2/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/2-2/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/2-2/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 12,
+     "kind": "content",
+     "label": "หน้า 12",
+     "src": "assets/manga/episodes/2-2/page-12.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 13,
+     "kind": "content",
+     "label": "หน้า 13",
+     "src": "assets/manga/episodes/2-2/page-13.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  },
+  {
+   "id": "2-3",
+   "number": "2.3",
+   "title": "สิ่งที่หลงเหลือ",
+   "chapter": "แผ่นดินแห่งเถ้าถ่าน",
+   "description": "ผู้เล่าสำรองบัตรบันทึกไว้หลายใบ เพื่อให้เรื่องที่เขาเก็บไว้ไม่หายไปพร้อมตำแหน่งงานของเขา",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/2-3/cover.webp",
+   "contentPages": 12,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/2-3/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/2-3/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/2-3/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/2-3/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/2-3/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/2-3/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/2-3/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/2-3/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/2-3/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/2-3/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/2-3/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/2-3/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 12,
+     "kind": "content",
+     "label": "หน้า 12",
+     "src": "assets/manga/episodes/2-3/page-12.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
   }
  ]
 }
