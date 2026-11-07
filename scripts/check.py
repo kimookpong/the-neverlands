@@ -111,7 +111,7 @@ def main():
     assert {str(f.parent.relative_to(OUT/'manga')) for f in (OUT/'manga').glob('*/index.html')}=={ep['id'] for ep in manga['episodes']}
     for ep in manga['episodes']:
         body=(OUT/f'manga/{ep["id"]}/index.html').read_text()
-        assert body.count('class="manga-reader-page"')==len(ep['pages'])
+        assert body.count('class="manga-reader-page"')==ep['contentPages']+1
         assert all(f'id="page-{p["number"]}"' in body for p in ep['pages'])
     articles = json.loads((OUT/'search-index.json').read_text())
     assert len(articles) == len(content['articles'])

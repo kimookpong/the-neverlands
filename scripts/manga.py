@@ -11,12 +11,11 @@ def validate_manga(data,asset_root):
     for ep in episodes:
         assert re.fullmatch(r'\d+-\d+',ep['id']) and ep['status']=='published' and ep['approvedAt']
         assert ep['contentPages']>=10
-        front=[p for p in ep['pages'] if p['kind']=='front']
-        assert len(front)<=1 and len(ep['pages'])==ep['contentPages']+1+len(front)
+        assert len(ep['pages'])==ep['contentPages']+1
         assert [p['number'] for p in ep['pages']]==list(range(len(ep['pages'])))
         assert ep['pages'][0]['kind']=='cover' and ep['cover']==ep['pages'][0]['src']
         for p in ep['pages']:
-            assert p['kind']==('cover' if p['number']==0 else ('front' if p['kind']=='front' and p['number']==1 else 'content'))
+            assert p['kind']==('cover' if p['number']==0 else 'content')
             assert p['src'].startswith(f'assets/manga/episodes/{ep["id"]}/') and '..' not in p['src']
             assert p['width']>0 and p['height']>0 and (asset_root/p['src']).is_file()
 
