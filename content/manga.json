@@ -1,107 +1,333 @@
 {
-  "visibility": "public",
-  "scope": "approved-manga-only",
-  "episodes": [
+ "visibility": "public",
+ "scope": "approved-manga-only",
+ "episodes": [
+  {
+   "id": "1-1",
+   "number": "1.1",
+   "title": "สิ่งที่อยู่ข้างหลัง",
+   "chapter": "ฝั่งแรก",
+   "description": "บนเรืออพยพ ถ้วยน้ำบิ่นและชื่อที่จารลงบนไม้เชื่อมผู้ที่ยังเดินทางอยู่กับคนที่ไปไม่ถึงฝั่ง",
+   "status": "published",
+   "approvedAt": "2026-11-07",
+   "cover": "assets/manga/episodes/1-1/cover.webp",
+   "contentPages": 10,
+   "pages": [
     {
-      "id": "1-1",
-      "number": "1.1",
-      "title": "สิ่งที่อยู่ข้างหลัง",
-      "chapter": "ฝั่งแรก",
-      "description": "บนเรืออพยพ ถ้วยน้ำบิ่นและชื่อที่จารลงบนไม้เชื่อมผู้ที่ยังเดินทางอยู่กับคนที่ไปไม่ถึงฝั่ง",
-      "status": "published",
-      "approvedAt": "2026-11-06",
-      "cover": "assets/manga/episodes/1-1/cover.webp",
-      "contentPages": 10,
-      "pages": [
-        {
-          "number": 0,
-          "kind": "cover",
-          "label": "หน้าปก",
-          "src": "assets/manga/episodes/1-1/cover.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 1,
-          "kind": "content",
-          "label": "หน้า 1",
-          "src": "assets/manga/episodes/1-1/page-01.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 2,
-          "kind": "content",
-          "label": "หน้า 2",
-          "src": "assets/manga/episodes/1-1/page-02.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 3,
-          "kind": "content",
-          "label": "หน้า 3",
-          "src": "assets/manga/episodes/1-1/page-03.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 4,
-          "kind": "content",
-          "label": "หน้า 4",
-          "src": "assets/manga/episodes/1-1/page-04.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 5,
-          "kind": "content",
-          "label": "หน้า 5",
-          "src": "assets/manga/episodes/1-1/page-05.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 6,
-          "kind": "content",
-          "label": "หน้า 6",
-          "src": "assets/manga/episodes/1-1/page-06.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 7,
-          "kind": "content",
-          "label": "หน้า 7",
-          "src": "assets/manga/episodes/1-1/page-07.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 8,
-          "kind": "content",
-          "label": "หน้า 8",
-          "src": "assets/manga/episodes/1-1/page-08.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 9,
-          "kind": "content",
-          "label": "หน้า 9",
-          "src": "assets/manga/episodes/1-1/page-09.webp",
-          "width": 1024,
-          "height": 1536
-        },
-        {
-          "number": 10,
-          "kind": "content",
-          "label": "หน้า 10",
-          "src": "assets/manga/episodes/1-1/page-10.webp",
-          "width": 1024,
-          "height": 1536
-        }
-      ]
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/1-1/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "front",
+     "label": "เรื่องก่อนหน้า",
+     "src": "assets/manga/episodes/1-1/front.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/1-1/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/1-1/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/1-1/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/1-1/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/1-1/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/1-1/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/1-1/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/1-1/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/1-1/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/1-1/page-10.webp",
+     "width": 1024,
+     "height": 1536
     }
-  ]
+   ]
+  },
+  {
+   "id": "1-2",
+   "number": "1.2",
+   "title": "ฝั่งที่ยังอ่านไม่ออก",
+   "chapter": "ฝั่งแรก",
+   "description": "ผู้อพยพขึ้นฝั่งที่ยังอ่านไม่ออก พบกิ่งไม้สามกิ่งกับเชือกที่มีคนซ่อมไว้ และต้องหาทางใช้น้ำโดยไม่ทำลายสิ่งที่ใครวางไว้",
+   "status": "published",
+   "approvedAt": "2026-11-07",
+   "cover": "assets/manga/episodes/1-2/cover.webp",
+   "contentPages": 10,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/1-2/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "front",
+     "label": "เรื่องก่อนหน้า",
+     "src": "assets/manga/episodes/1-2/front.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/1-2/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/1-2/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/1-2/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/1-2/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/1-2/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/1-2/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/1-2/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/1-2/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/1-2/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/1-2/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  },
+  {
+   "id": "1-3",
+   "number": "1.3",
+   "title": "เสียงจากอีกฝั่ง",
+   "chapter": "ฝั่งแรก",
+   "description": "คืนหนึ่งมีไฟอีกดวงขึ้นในป่า เมื่อคนอีกฝั่งปรากฏริมลำธาร ภาษาที่ไม่เข้าใจกันทำให้ทุกท่าทางมีความหมายที่ยังอ่านไม่ออก",
+   "status": "published",
+   "approvedAt": "2026-11-07",
+   "cover": "assets/manga/episodes/1-3/cover.webp",
+   "contentPages": 10,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/1-3/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "front",
+     "label": "เรื่องก่อนหน้า",
+     "src": "assets/manga/episodes/1-3/front.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/1-3/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/1-3/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/1-3/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/1-3/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/1-3/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/1-3/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/1-3/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/1-3/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/1-3/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/1-3/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  }
+ ]
 }
