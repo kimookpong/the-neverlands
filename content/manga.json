@@ -982,6 +982,333 @@
      "height": 1536
     }
    ]
+  },
+  {
+   "id": "4-1",
+   "number": "4.1",
+   "title": "คนที่รอข้าว",
+   "chapter": "บ้านใต้เงาสงคราม",
+   "description": "เคแลนตามเธสซาไปลานหลังโรงย้อมผ้า และเห็นชาวบ้านที่แป้งถูกยึดมาลงชื่อรับอาหารร่วมกัน",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/4-1/cover.webp",
+   "contentPages": 11,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/4-1/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/4-1/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/4-1/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/4-1/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/4-1/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/4-1/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/4-1/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/4-1/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/4-1/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/4-1/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/4-1/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/4-1/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  },
+  {
+   "id": "4-2",
+   "number": "4.2",
+   "title": "ชื่อในบัญชี",
+   "chapter": "บ้านใต้เงาสงคราม",
+   "description": "เมื่อมีคนถามว่าใครข้ามน้ำมาทีหลัง บัญชีรายชื่อที่ต้องใช้แบ่งอาหารก็เริ่มถูกตั้งคำถาม",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/4-2/cover.webp",
+   "contentPages": 11,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/4-2/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/4-2/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/4-2/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/4-2/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/4-2/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/4-2/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/4-2/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/4-2/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/4-2/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/4-2/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/4-2/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/4-2/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  },
+  {
+   "id": "4-3",
+   "number": "4.3",
+   "title": "คำขอที่ส่งไม่ถึง",
+   "chapter": "บ้านใต้เงาสงคราม",
+   "description": "คำขอเสบียงของลานถูกส่งต่อระหว่างหลายสำนักงานโดยไม่มีใครรับ จนเกิดทางออกอีกทางในตรอกโรงพิมพ์",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/4-3/cover.webp",
+   "contentPages": 11,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/4-3/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/4-3/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/4-3/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/4-3/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/4-3/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/4-3/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/4-3/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/4-3/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/4-3/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/4-3/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/4-3/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/4-3/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
   }
  ]
 }
