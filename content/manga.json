@@ -655,6 +655,333 @@
      "height": 1536
     }
    ]
+  },
+  {
+   "id": "3-1",
+   "number": "3.1",
+   "title": "ออกจากควันไฟ",
+   "chapter": "เด็กที่ไร้นาม",
+   "description": "เคแลนวัยหกขวบหนีออกจากบ้านที่กำลังถล่มไปกับเมรอน และถูกพาเข้าสู่ฝูงผู้ลี้ภัยโดยไม่รู้ว่าแม่จะตามมาหรือไม่",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/3-1/cover.webp",
+   "contentPages": 11,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/3-1/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/3-1/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/3-1/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/3-1/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/3-1/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/3-1/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/3-1/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/3-1/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/3-1/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/3-1/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/3-1/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/3-1/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  },
+  {
+   "id": "3-2",
+   "number": "3.2",
+   "title": "ชื่อที่ถูกสอนให้จำ",
+   "chapter": "เด็กที่ไร้นาม",
+   "description": "เคแลนกับเมรอนมาถึงด่านเมืองเอลเดรเวน ถูกถามชื่อและที่มา ก่อนได้ที่พักเล็กและตราอุปการะที่ต้องเก็บไว้",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/3-2/cover.webp",
+   "contentPages": 11,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/3-2/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/3-2/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/3-2/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/3-2/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/3-2/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/3-2/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/3-2/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/3-2/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/3-2/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/3-2/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/3-2/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/3-2/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
+  },
+  {
+   "id": "3-3",
+   "number": "3.3",
+   "title": "เสบียงที่ถูกยึด",
+   "chapter": "เด็กที่ไร้นาม",
+   "description": "เมื่อเคแลนโตขึ้น เขาเห็นเจ้าหน้าที่ยึดแป้งจากโรงอบขนมปังและเริ่มตั้งคำถามกับระบบที่ตัดสินว่าใครควรได้กิน",
+   "status": "published",
+   "approvedAt": "2026-11-08",
+   "cover": "assets/manga/episodes/3-3/cover.webp",
+   "contentPages": 11,
+   "pages": [
+    {
+     "number": 0,
+     "kind": "cover",
+     "label": "หน้าปก",
+     "src": "assets/manga/episodes/3-3/cover.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 1,
+     "kind": "content",
+     "label": "หน้า 1",
+     "src": "assets/manga/episodes/3-3/page-01.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 2,
+     "kind": "content",
+     "label": "หน้า 2",
+     "src": "assets/manga/episodes/3-3/page-02.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 3,
+     "kind": "content",
+     "label": "หน้า 3",
+     "src": "assets/manga/episodes/3-3/page-03.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 4,
+     "kind": "content",
+     "label": "หน้า 4",
+     "src": "assets/manga/episodes/3-3/page-04.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 5,
+     "kind": "content",
+     "label": "หน้า 5",
+     "src": "assets/manga/episodes/3-3/page-05.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 6,
+     "kind": "content",
+     "label": "หน้า 6",
+     "src": "assets/manga/episodes/3-3/page-06.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 7,
+     "kind": "content",
+     "label": "หน้า 7",
+     "src": "assets/manga/episodes/3-3/page-07.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 8,
+     "kind": "content",
+     "label": "หน้า 8",
+     "src": "assets/manga/episodes/3-3/page-08.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 9,
+     "kind": "content",
+     "label": "หน้า 9",
+     "src": "assets/manga/episodes/3-3/page-09.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 10,
+     "kind": "content",
+     "label": "หน้า 10",
+     "src": "assets/manga/episodes/3-3/page-10.webp",
+     "width": 1024,
+     "height": 1536
+    },
+    {
+     "number": 11,
+     "kind": "content",
+     "label": "หน้า 11",
+     "src": "assets/manga/episodes/3-3/page-11.webp",
+     "width": 1024,
+     "height": 1536
+    }
+   ]
   }
  ]
 }
